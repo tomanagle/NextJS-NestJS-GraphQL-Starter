@@ -62,7 +62,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 ## Support
 [Buy me a Coffee](https://www.buymeacoffee.com/tomn)
 
-[Sign up to DigitalOcean](https://m.do.co/c/1b74cb8c56f4) I 💖DigitalOcean
+[Sign up to DigitalOcean](https://m.do.co/c/1b74cb8c56f4) I 💖 DigitalOcean
 
 Check out my latest project [Snipd](https://snipd.io/)
 
