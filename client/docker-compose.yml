@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  starter-client:
+    container_name: starter-client
+    env_file:
+      - .env
+    build:
+      context: ./
+    image: starter-client
+    ports:
+       - "3000:3000"
+    networks:
+      - app-network
+
+networks:    
+  app-network:
+    external: true 

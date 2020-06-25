@@ -1,0 +1,48 @@
+version: 1
+update_configs:
+  # Server NPM packages
+  - package_manager: "javascript"
+    directory: "/server"
+    update_schedule: "monthly"
+    target_branch: "develop"
+    default_reviewers:
+      - "tomanagle"
+    default_labels:
+      - "server"
+      - "dependencies"
+      - "dependabot"
+  # Client NPM packages
+  - package_manager: "javascript"
+    directory: "/client"
+    update_schedule: "monthly"
+    target_branch: "develop"
+    default_reviewers:
+      - "tomanagle"
+    default_labels:
+      - "client"
+      - "dependencies"
+      - "dependabot"
+
+  # Server Docker
+  - package_manager: "docker"
+    directory: "/server"
+    update_schedule: "weekly"
+    target_branch: "develop"
+    default_reviewers:
+      - "tomanagle"
+    default_labels:
+      - "server"
+      - "docker"
+      - "dependabot"
+
+  # Client Docker
+  - package_manager: "docker"
+    directory: "/client"
+    update_schedule: "weekly"
+    target_branch: "develop"
+    default_reviewers:
+      - "tomanagle"
+    default_labels:
+      - "client"
+      - "docker"
+      - "dependabot"        

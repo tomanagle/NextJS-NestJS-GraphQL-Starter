@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "esnext",
+    "lib": ["esnext"],
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "paths": {
+      "@user/*": ["src/user/*"],
+      "@taxonomy/*": ["src/taxonomy/*"],
+      "@post/*": ["src/post/*"],
+      "@auth/*": ["src/auth/*"],
+      "@comment/*": ["src/comment/*"],
+      "@vote/*": ["src/vote/*"],
+      "@feedback/*": ["src/feedback/*"],
+      "@input": ["src/types/input"],
+      "@types": ["src/types/types"],
+      "@enums": ["src/types/enums"],
+      "@secrets": ["src/config/secrets"],
+      "@constants": ["src/config/constants"],
+      "@analytics": ["src/analytics/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}

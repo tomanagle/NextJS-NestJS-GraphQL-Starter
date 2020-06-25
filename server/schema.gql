@@ -1,0 +1,51 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  _id: ID!
+  email: String
+  name: String!
+  permalink: String!
+  active: Boolean!
+  githubId: String!
+  redditId: String!
+  avatar: String
+  bio: String
+  role: Roles!
+}
+
+enum Roles {
+  USER
+  ADMIN
+}
+
+type Query {
+  gitHubAuth(input: GitHubAuthInput!): User!
+  redditAuth(input: RedditAuthInput!): User!
+  users: [User!]!
+  me: User
+  user(input: GetUserInput!): User
+}
+
+input GitHubAuthInput {
+  code: String
+}
+
+input RedditAuthInput {
+  code: String
+}
+
+input GetUserInput {
+  userPermalink: String!
+}
+
+type Mutation {
+  updateUser(input: UpdateUserInput!): User!
+}
+
+input UpdateUserInput {
+  email: String
+  name: String
+  bio: String
+}

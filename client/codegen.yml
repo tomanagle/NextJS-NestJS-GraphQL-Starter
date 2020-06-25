@@ -1,0 +1,25 @@
+overwrite: true
+schema: "http://localhost:5000/graphql"
+documents: "graphql/**/*.ts"
+generates:
+  generated/index.tsx:
+    plugins:
+      - add: '// THIS IS A GENERATED FILE, use `yarn codegen to regenerate'
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+  schema/typeDefs.graphql:
+    plugins:
+      - add: '# THIS IS A GENERATED FILE, use `yarn codegen to regenerate'
+      - schema-ast
+config:
+  immutableTypes: true
+  namingConvention:
+    typeNames: change-case#pascalCase
+    enumValues: change-case#upperCase
+  scalars:
+    DateTime: Date
+    Date: Date
+    Time: Date
+    String: string
+  withHooks: true
