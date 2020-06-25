@@ -14,11 +14,13 @@ A NextJS frontend and NextJS backend GraphQL starter pack that includes GitHub &
 * [Apollo Client](https://www.apollographql.com/docs/react/)
 * [GraphQL Code Generator](https://graphql-code-generator.com/)
 * [Yup](https://github.com/jquense/yup)
+* [TypeScript](https://www.typescriptlang.org/)
 
 ### Backend
 * [NestJS](https://nestjs.com/)
 * [Mongoose](https://mongoosejs.com/)
 * [TypeGraphQL](https://typegraphql.com/)
+* [TypeScript](https://www.typescriptlang.org/)
 
 ## Getting started
 
