@@ -4,7 +4,7 @@ update_configs:
   - package_manager: "javascript"
     directory: "/server"
     update_schedule: "monthly"
-    target_branch: "develop"
+    target_branch: "master"
     default_reviewers:
       - "tomanagle"
     default_labels:
@@ -15,7 +15,7 @@ update_configs:
   - package_manager: "javascript"
     directory: "/client"
     update_schedule: "monthly"
-    target_branch: "develop"
+    target_branch: "master"
     default_reviewers:
       - "tomanagle"
     default_labels:
@@ -27,7 +27,7 @@ update_configs:
   - package_manager: "docker"
     directory: "/server"
     update_schedule: "weekly"
-    target_branch: "develop"
+    target_branch: "master"
     default_reviewers:
       - "tomanagle"
     default_labels:
@@ -39,7 +39,7 @@ update_configs:
   - package_manager: "docker"
     directory: "/client"
     update_schedule: "weekly"
-    target_branch: "develop"
+    target_branch: "master"
     default_reviewers:
       - "tomanagle"
     default_labels:
