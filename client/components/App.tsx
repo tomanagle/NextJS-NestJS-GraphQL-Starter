@@ -20,7 +20,8 @@ import LoginButtons from 'components/LoginButtons';
 import { CLIENT_DOMAIN, SITE_NAME, TWITTER_HANDLE } from 'config/env';
 import manifest from 'public/manifest.json';
 import Login from 'components/Login';
-
+import LoggedOutNavigation from 'components/LoggedOutNavigation';
+import LoggedInNavigation from 'components/LoggedInNavigation';
 const { Header: _Header, Footer: _Footer, Content: _Content } = _Layout;
 
 const PageHeader = styled(_PageHeader)`
@@ -234,42 +235,7 @@ const App = ({
               </Link>
             }
             extra={[
-              me ? (
-                <React.Fragment key="logged-in-extra-menu">
-                  <Dropdown
-                    key="logged-in-extra-menu__dropdown"
-                    overlay={
-                      <Menu>
-                        <Menu.Item key="app-menu-item-1_key-2">
-                          <Link
-                            key="app-link-1_key-2"
-                            href="/profile"
-                            as="/profile"
-                          >
-                            <a>
-                              <SettingOutlined /> Profile
-                            </a>
-                          </Link>
-                        </Menu.Item>
-                      </Menu>
-                    }
-                  >
-                    <Button
-                      icon={
-                        <Avatar
-                          size="small"
-                          src={me.avatar}
-                          alt={`${me.name} avatar`}
-                        />
-                      }
-                    >
-                      Menu
-                    </Button>
-                  </Dropdown>
-                </React.Fragment>
-              ) : (
-                <LoginButtons />
-              )
+              me ? <LoggedInNavigation me={me} /> : <LoggedOutNavigation />
             ]}
           />
 

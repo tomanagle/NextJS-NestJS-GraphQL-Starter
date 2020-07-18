@@ -43,6 +43,7 @@ export const UserSchema = new mongoose.Schema(
     },
     githubId: { type: String, required: false },
     redditId: { type: String, required: false },
+    googleId: { type: String, required: false },
     avatar: String,
   },
   {

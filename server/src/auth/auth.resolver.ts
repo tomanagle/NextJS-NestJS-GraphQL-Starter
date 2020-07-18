@@ -16,4 +16,14 @@ export class AuthResolver {
   async redditAuth(@Args('input') input: RedditAuthInput, @Context() context) {
     return this.authService.redditAuth(input, context);
   }
+
+  @Query(_returns => User)
+  async googleAuth(@Args('input') input: RedditAuthInput, @Context() context) {
+    return this.authService.googleAuth(input, context);
+  }
+
+  @Query(_returns => String)
+  async getGoogleAuthURL() {
+    return this.authService.getGoogleAuthURL();
+  }
 }

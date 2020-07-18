@@ -1,15 +1,14 @@
 import * as React from 'react';
 import { get } from 'lodash';
-import { GithubOutlined } from '@ant-design/icons';
+import { GoogleOutlined } from '@ant-design/icons';
 import { Button, Tooltip } from 'antd';
 import { useRouter } from 'next/router';
-import { GITHUB_CLIENT_ID, CLIENT_DOMAIN } from 'config/env';
+import { useGetGoogleAuthUrlQuery } from 'generated';
 
-const GitHubLogin = ({ text = 'GitHub login' }: { text?: string }) => {
+function GoogleLoginLink({ text = 'Login with Google' }) {
+  const { data } = useGetGoogleAuthUrlQuery();
+  const href = get(data, 'getGoogleAuthURL', '');
   const router = useRouter();
-  const asPath = get(router, 'asPath', '/');
-
-  const href = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&scope=user:email&redirect_uri=${CLIENT_DOMAIN}/login/github?redirect=${asPath}`;
 
   let checkConnect;
   let win;
@@ -34,14 +33,15 @@ const GitHubLogin = ({ text = 'GitHub login' }: { text?: string }) => {
   return (
     <Tooltip title="Login or register with your GitHub account">
       <Button
-        type="primary"
+        type="ghost"
+        style={{ backgroundColor: '#4185f3', color: '#fff' }}
         onClick={handleClick}
-        icon={<GithubOutlined style={{ fontSize: '18px' }} />}
+        icon={<GoogleOutlined style={{ fontSize: '18px' }} />}
       >
         <span className="social-login-wrapper__text">{text}</span>
       </Button>
     </Tooltip>
   );
-};
+}
 
-export default GitHubLogin;
+export default GoogleLoginLink;

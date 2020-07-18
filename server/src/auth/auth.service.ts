@@ -13,8 +13,12 @@ import {
   GITHUB_CLIENT_SECRET,
   REDDIT_APP_ID,
   REDDIT_APP_SECRET,
+  SIGNING_KEY,
+  GOOGLE_CLIENT_ID,
+  GOOGLE_CLIENT_SECRET,
 } from '@secrets';
 import axios from 'axios';
+import { google } from 'googleapis';
 import deepClean from 'deep-clean';
 import { Model } from 'mongoose';
 import jwt from 'jsonwebtoken';
@@ -22,8 +26,22 @@ import faker from 'faker';
 import querystring from 'querystring';
 import { User, UserModel } from '../user/user.schema';
 import { Session } from '@auth/auth.schema';
-import { SIGNING_KEY } from '../config/secrets';
 import { RedditUser, GitHubUser } from '@user/user.dto';
+
+const oauth2Client = new google.auth.OAuth2(
+  GOOGLE_CLIENT_ID,
+  GOOGLE_CLIENT_SECRET,
+  /*
+   * This is where Google will redirect the user after they
+   * give permission to your application
+   */
+  `${CORS_ORIGIN}/login/google`,
+);
+
+// Do I need to do this?
+google.options({
+  auth: oauth2Client,
+});
 
 async function getRedditUser({ code }: { code: string }): Promise<RedditUser> {
   // Get an access token
@@ -99,6 +117,28 @@ async function getGitHubUser({ code }): Promise<GitHubUser> {
       Logger.error(`Error getting user from GitHub`);
       throw error;
     });
+}
+
+async function getGoogleUser({ code }) {
+  const { tokens } = await oauth2Client.getToken(code);
+  console.log('tokens', tokens);
+  oauth2Client.setCredentials(tokens);
+
+  const googleUser = await axios
+    .get(
+      `https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${tokens.access_token}`,
+      {
+        headers: {
+          Authorization: `Bearer ${tokens.id_token}`,
+        },
+      },
+    )
+    .then(res => res.data)
+    .catch(error => {
+      throw new Error(error.message);
+    });
+
+  return googleUser;
 }
 
 @Injectable()
@@ -249,5 +289,87 @@ export class AuthService {
     });
 
     return user;
+  }
+
+  async googleAuth(input, context) {
+    const googleUser = await getGoogleUser({ code: input.code });
+    console.log('googleUser', googleUser);
+
+    let user = await this.userModel
+      .findOne({ githubId: String(googleUser.id) })
+      .then(data => data)
+      .catch(error => {
+        Logger.error(
+          `Error getting user from database with googleId ${googleUser.id}`,
+        );
+        throw error;
+      });
+
+    if (user) {
+      await user.update({
+        ...deepClean({
+          ...{
+            ...googleUser,
+            // Fields to not overwrite
+            name:
+              get(user, 'name', null) ||
+              `${googleUser.given_name} ${googleUser.family_name}`,
+            email: googleUser.email || user.email,
+          },
+          avatar: googleUser.picture,
+        }),
+      });
+    }
+
+    if (!user) {
+      user = await this.userModel
+        .create({
+          ...deepClean(googleUser),
+          googleId: googleUser.id,
+          active: true,
+          avatar: googleUser.picture,
+          name: `${googleUser.given_name} ${googleUser.family_name}`,
+        })
+        .then(data => {
+          return data;
+        })
+        .catch(error => {
+          throw error;
+        });
+    }
+
+    const token = await this.generateSession({
+      ip: context.req.ip,
+      userAgent: context.req.headers['user-agent'],
+      user: { _id: user._id, role: user.role },
+    });
+
+    context.res.cookie('token', token, {
+      maxAge: REFRESH_COOKIE_DURATION,
+      domain: COOKIE_DOMAIN,
+      httpOnly: true,
+      secure: !IS_LOCAL,
+    });
+
+    return user;
+  }
+
+  async getGoogleAuthURL() {
+    /*
+     * Generate a url that asks permissions to the user's email and profile
+     */
+    const scopes = [
+      'https://www.googleapis.com/auth/userinfo.profile',
+      'https://www.googleapis.com/auth/userinfo.email',
+    ];
+
+    const url = oauth2Client.generateAuthUrl({
+      // eslint-disable-next-line @typescript-eslint/camelcase
+      access_type: 'offline',
+      prompt: 'consent',
+      scope: scopes, // If you only need one scope you can pass it as string
+    });
+
+    return url;
   }
 }

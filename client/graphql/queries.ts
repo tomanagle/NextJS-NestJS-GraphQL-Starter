@@ -19,6 +19,14 @@ export const REDDIT_LOGIN_QUERY = gql`
   }
 `;
 
+export const GOOGLE_LOGIN_QUERY = gql`
+  query googleAuth($input: RedditAuthInput!) {
+    googleAuth(input: $input) {
+      _id
+    }
+  }
+`;
+
 export const ME_QUERY = gql`
   query me {
     me {
@@ -41,5 +49,11 @@ export const GET_USER_QUERY = gql`
       avatar
       bio
     }
+  }
+`;
+
+export const GET_GOOGLE_LOG_LINK = gql`
+  query getGoogleAuthURL {
+    getGoogleAuthURL
   }
 `;

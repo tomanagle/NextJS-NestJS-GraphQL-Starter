@@ -1,11 +1,9 @@
 import * as React from 'react';
 import { RedditOutlined } from '@ant-design/icons';
 import { Button, Tooltip } from 'antd';
-import { useRouter } from 'next/router';
 import { CLIENT_DOMAIN, REDDIT_CLIENT_ID } from 'config/env';
 
 const GitHubLogin = ({ text = 'Reddit login' }: { text?: string }) => {
-  const router = useRouter();
   const TYPE = 'code';
   const SCOPE_STRING = 'identity';
 
@@ -42,7 +40,8 @@ const GitHubLogin = ({ text = 'Reddit login' }: { text?: string }) => {
   return (
     <Tooltip title="Login or register with your Reddit account">
       <Button
-        type="primary"
+        type="ghost"
+        style={{ backgroundColor: '#ff4500', color: '#fff' }}
         onClick={handleClick}
         icon={<RedditOutlined style={{ fontSize: '18px' }} />}
       >
