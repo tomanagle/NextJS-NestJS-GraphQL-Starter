@@ -2,6 +2,7 @@
 A NextJS frontend and NextJS backend GraphQL starter pack that includes GitHub & Reddit authentication.
 
 ## Features
+- [x] Google authentication
 - [x] GitHub authentication
 - [x] Reddit authentication
 - [x] Update basic profile information
