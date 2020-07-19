@@ -5,7 +5,7 @@ import { Button, Tooltip } from 'antd';
 import { useRouter } from 'next/router';
 import { GITHUB_CLIENT_ID, CLIENT_DOMAIN } from 'config/env';
 
-const GitHubLogin = ({ text = 'GitHub login' }: { text?: string }) => {
+const GitHubLogin = ({ text = 'GitHub login', redirect = '/' }) => {
   const router = useRouter();
   const asPath = get(router, 'asPath', '/');
 
@@ -25,7 +25,7 @@ const GitHubLogin = ({ text = 'GitHub login' }: { text?: string }) => {
       if (!win || !win.closed) return;
       clearInterval(checkConnect);
       if (!reloaded) {
-        window.location.reload();
+        window.location.href = redirect;
         reloaded = true;
       }
     }, 100);

@@ -38,11 +38,6 @@ const oauth2Client = new google.auth.OAuth2(
   `${CORS_ORIGIN}/login/google`,
 );
 
-// Do I need to do this?
-google.options({
-  auth: oauth2Client,
-});
-
 async function getRedditUser({ code }: { code: string }): Promise<RedditUser> {
   // Get an access token
   const session = await axios
@@ -121,9 +116,10 @@ async function getGitHubUser({ code }): Promise<GitHubUser> {
 
 async function getGoogleUser({ code }) {
   const { tokens } = await oauth2Client.getToken(code);
-  console.log('tokens', tokens);
+
   oauth2Client.setCredentials(tokens);
 
+  // Fetch the user's profile with the access token and bearer
   const googleUser = await axios
     .get(
       `https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${tokens.access_token}`,
@@ -293,17 +289,10 @@ export class AuthService {
 
   async googleAuth(input, context) {
     const googleUser = await getGoogleUser({ code: input.code });
-    console.log('googleUser', googleUser);
 
     let user = await this.userModel
       .findOne({ githubId: String(googleUser.id) })
-      .then(data => data)
-      .catch(error => {
-        Logger.error(
-          `Error getting user from database with googleId ${googleUser.id}`,
-        );
-        throw error;
-      });
+      .exec();
 
     if (user) {
       await user.update({
@@ -354,7 +343,7 @@ export class AuthService {
     return user;
   }
 
-  async getGoogleAuthURL() {
+  getGoogleAuthURL() {
     /*
      * Generate a url that asks permissions to the user's email and profile
      */
@@ -363,13 +352,11 @@ export class AuthService {
       'https://www.googleapis.com/auth/userinfo.email',
     ];
 
-    const url = oauth2Client.generateAuthUrl({
+    return oauth2Client.generateAuthUrl({
       // eslint-disable-next-line @typescript-eslint/camelcase
       access_type: 'offline',
       prompt: 'consent',
       scope: scopes, // If you only need one scope you can pass it as string
     });
-
-    return url;
   }
 }

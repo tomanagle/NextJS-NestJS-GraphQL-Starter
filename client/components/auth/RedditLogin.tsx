@@ -3,7 +3,7 @@ import { RedditOutlined } from '@ant-design/icons';
 import { Button, Tooltip } from 'antd';
 import { CLIENT_DOMAIN, REDDIT_CLIENT_ID } from 'config/env';
 
-const GitHubLogin = ({ text = 'Reddit login' }: { text?: string }) => {
+const GitHubLogin = ({ text = 'Reddit login', redirect = '/' }) => {
   const TYPE = 'code';
   const SCOPE_STRING = 'identity';
 
@@ -31,7 +31,7 @@ const GitHubLogin = ({ text = 'Reddit login' }: { text?: string }) => {
       clearInterval(checkConnect);
 
       if (!reloaded) {
-        window.location.reload();
+        window.location.href = redirect;
         reloaded = true;
       }
     }, 100);

@@ -5,7 +5,7 @@ import { Button, Tooltip } from 'antd';
 import { useRouter } from 'next/router';
 import { useGetGoogleAuthUrlQuery } from 'generated';
 
-function GoogleLoginLink({ text = 'Login with Google' }) {
+function GoogleLoginLink({ text = 'Login with Google', redirect = '/' }) {
   const { data } = useGetGoogleAuthUrlQuery();
   const href = get(data, 'getGoogleAuthURL', '');
   const router = useRouter();
@@ -24,14 +24,14 @@ function GoogleLoginLink({ text = 'Login with Google' }) {
       if (!win || !win.closed) return;
       clearInterval(checkConnect);
       if (!reloaded) {
-        window.location.reload();
+        window.location.href = redirect;
         reloaded = true;
       }
     }, 100);
   }
 
   return (
-    <Tooltip title="Login or register with your GitHub account">
+    <Tooltip title="Login or register with your Google account">
       <Button
         type="ghost"
         style={{ backgroundColor: '#4185f3', color: '#fff' }}
