@@ -46,7 +46,7 @@
     "helmet": "^3.22.0",
     "jsonwebtoken": "^8.5.1",
     "jwks-rsa": "^1.8.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "mongoose": "^5.9.11",
     "mongoose-permalink": "^2.0.0",
     "passport": "^0.4.1",
