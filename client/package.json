@@ -36,7 +36,7 @@
     "eslint": "^6.5.1",
     "formik": "^2.1.4",
     "graphql": "^14.5.8",
-    "graphql-tag": "^2.10.1",
+    "graphql-tag": "^2.11.0",
     "i18next": "^19.4.2",
     "i18next-xhr-backend": "^3.2.2",
     "jsonwebtoken": "^8.5.1",
