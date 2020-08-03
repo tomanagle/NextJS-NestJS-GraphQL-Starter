@@ -43,7 +43,7 @@
     "googleapis": "^54.1.0",
     "graphql": "^15.0.0",
     "graphql-tools": "^5.0.0",
-    "helmet": "^3.22.0",
+    "helmet": "^4.0.0",
     "jsonwebtoken": "^8.5.1",
     "jwks-rsa": "^1.8.0",
     "lodash": "^4.17.19",
