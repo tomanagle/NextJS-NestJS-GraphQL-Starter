@@ -1350,13 +1350,13 @@
     auto-bind "~4.0.0"
     tslib "~2.0.0"
 
-"@graphql-codegen/typescript-graphql-files-modules@1.12.2":
-  version "1.12.2"
-  resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript-graphql-files-modules/-/typescript-graphql-files-modules-1.12.2.tgz#8b837945a4a8e0ee6996e46302c9e4eed12b6810"
-  integrity sha512-aRlGVuE1MS2HPZcAudZQwRCKpNUWghamolWh+Enzm88RVq7+c2gGjOPG1sqFY3UU+zfiRSOR21aZ1CwnV1cgzw==
+"@graphql-codegen/typescript-graphql-files-modules@1.18.0":
+  version "1.18.0"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript-graphql-files-modules/-/typescript-graphql-files-modules-1.18.0.tgz#a9048805609284ca93a88e4e658ef0805f368e58"
+  integrity sha512-zNNGkHIohuIpwpWAuiVqfPsoVARdnQqI2Cn156kUhm2ap1uDpTYuzjXHD9jCu1EXabgS/8uJFyz6hvv4rUpINA==
   dependencies:
-    "@graphql-codegen/plugin-helpers" "1.12.2"
-    tslib "1.10.0"
+    "@graphql-codegen/plugin-helpers" "^1.17.9"
+    tslib "~2.0.1"
 
 "@graphql-codegen/typescript-operations@^1.5.0":
   version "1.17.8"
