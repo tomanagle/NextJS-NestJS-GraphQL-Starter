@@ -1,4 +1,4 @@
-FROM node:12-alpine
+FROM node:15-alpine
 
 ADD package.json /tmp/package.json
 RUN cd /tmp && rm -rf node_modules && npm install -q
