@@ -27,7 +27,7 @@
     "@nestjs/graphql": "^7.3.5",
     "@nestjs/mongoose": "^6.4.0",
     "@nestjs/passport": "^7.0.0",
-    "@nestjs/platform-express": "^7.0.0",
+    "@nestjs/platform-express": "^7.5.5",
     "@sentry/node": "5.16.1",
     "@types/shortid": "^0.0.29",
     "apollo-datasource-mongodb": "^0.2.6",
