@@ -65,7 +65,7 @@
   },
   "devDependencies": {
     "@babel/helper-call-delegate": "^7.8.7",
-    "@graphql-codegen/add": "^1.5.0",
+    "@graphql-codegen/add": "^2.0.2",
     "@graphql-codegen/cli": "^1.7.0",
     "@graphql-codegen/introspection": "1.12.2",
     "@graphql-codegen/schema-ast": "^1.5.0",
