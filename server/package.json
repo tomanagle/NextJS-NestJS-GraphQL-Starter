@@ -39,7 +39,7 @@
     "deep-clean": "^1.0.2",
     "dotenv": "^8.2.0",
     "express-useragent": "^1.0.13",
-    "faker": "^4.1.0",
+    "faker": "^5.1.0",
     "googleapis": "^54.1.0",
     "graphql": "^15.4.0",
     "graphql-tools": "^5.0.0",
