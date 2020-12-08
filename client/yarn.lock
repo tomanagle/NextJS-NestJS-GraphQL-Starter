@@ -128,7 +128,7 @@
     ts-invariant "^0.4.4"
     tslib "^1.10.0"
 
-"@apollo/react-components@^3.1.4", "@apollo/react-components@^3.1.5":
+"@apollo/react-components@^3.1.4":
   version "3.1.5"
   resolved "https://registry.yarnpkg.com/@apollo/react-components/-/react-components-3.1.5.tgz#040d2f35ce4947747efe16f76d59dcbd797ffdaf"
   integrity sha512-c82VyUuE9VBnJB7bnX+3dmwpIPMhyjMwyoSLyQWPHxz8jK4ak30XszJtqFf4eC4hwvvLYa+Ou6X73Q8V8e2/jg==
@@ -139,16 +139,12 @@
     ts-invariant "^0.4.4"
     tslib "^1.10.0"
 
-"@apollo/react-hoc@^3.1.4":
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/@apollo/react-hoc/-/react-hoc-3.1.5.tgz#6552d2fb4aafc59fdc8f4e353358b98b89cfab6f"
-  integrity sha512-jlZ2pvEnRevLa54H563BU0/xrYSgWQ72GksarxUzCHQW85nmn9wQln0kLBX7Ua7SBt9WgiuYQXQVechaaCulfQ==
+"@apollo/react-hoc@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@apollo/react-hoc/-/react-hoc-4.0.0.tgz#64b54d9adf558b9fdca1215e661736acad426e05"
+  integrity sha512-+DgmqWRLkdlFk5jq11xJdVzb014TiTvr0K+E9CL1ioJpr85d7XIVycUwcYqb2acjeMbDF0V7G8VGiAVgkSkZKA==
   dependencies:
-    "@apollo/react-common" "^3.1.4"
-    "@apollo/react-components" "^3.1.5"
-    hoist-non-react-statics "^3.3.0"
-    ts-invariant "^0.4.4"
-    tslib "^1.10.0"
+    "@apollo/client" latest
 
 "@apollo/react-hooks@^3.1.4", "@apollo/react-hooks@^3.1.5":
   version "3.1.5"
