@@ -3,17 +3,18 @@ import App from 'next/app';
 import withGA from 'next-ga';
 import NProgress from 'nprogress';
 import { get } from 'lodash';
+import { Provider as BumbagProvider, ToastManager } from 'bumbag';
 import { ApolloProvider } from '@apollo/react-hooks';
-import { ThemeProvider } from 'styled-components';
 import Router from 'next/router';
 import withDarkMode from 'next-dark-mode';
 import withApolloClient from '../lib/with-apollo-client';
 import { GA_ID } from '../constants';
 import initSentry from '../lib/sentry';
-import 'public/theme.less';
-import theme from 'constants/theme';
 import jwt from 'jsonwebtoken';
 import parseCookie from 'helpers/parseCookie';
+import bbTheme from '../constants/bbTheme';
+
+export const Context = React.createContext({ ua: '' });
 
 NProgress.configure({ showSpinner: false });
 Router.events.on('routeChangeStart', () => {
@@ -24,6 +25,7 @@ Router.events.on('routeChangeError', () => NProgress.done());
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
+    const ua = get(ctx, 'req.headers[user-agent]', '');
     const token = parseCookie({
       cookie: get(ctx, 'req.headers.cookie', ''),
       name: 'token'
@@ -33,7 +35,8 @@ class MyApp extends App {
 
     let pageProps = {
       query: null,
-      userContext: null
+      userContext: null,
+      ua
     };
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
@@ -54,11 +57,14 @@ class MyApp extends App {
     const { Component, pageProps, apolloClient } = this.props;
 
     return (
-      <ApolloProvider client={apolloClient}>
-        <ThemeProvider theme={theme}>
-          <Component {...pageProps} />
-        </ThemeProvider>
-      </ApolloProvider>
+      <Context.Provider value={{ ua: pageProps.ua }}>
+        <ApolloProvider client={apolloClient}>
+          <BumbagProvider isSSR theme={bbTheme}>
+            <Component {...pageProps} />
+            <ToastManager />
+          </BumbagProvider>
+        </ApolloProvider>
+      </Context.Provider>
     );
   }
 }

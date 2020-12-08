@@ -1,10 +1,8 @@
-import { Alert } from 'antd';
+import { Alert } from 'bumbag';
+
 const Error = ({ error }) => {
   return (
-    <Alert
-      message={error.message.replace('GraphQL error: ', '')}
-      type="error"
-    />
+    <Alert type="danger"> {error.message.replace('GraphQL error: ', '')}</Alert>
   );
 };
 

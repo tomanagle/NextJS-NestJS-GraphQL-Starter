@@ -1,6 +1,5 @@
 import React from 'react';
-import { Row, Col } from 'antd';
-import styled from 'styled-components';
+import { styled } from 'bumbag';
 
 const Wrapper = styled.div`
   padding: 2.5rem;

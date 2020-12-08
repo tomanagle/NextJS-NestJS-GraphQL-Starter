@@ -1,7 +1,6 @@
 import React from 'react';
 import gql from 'graphql-tag';
-import styled from 'styled-components';
-import { message } from 'antd';
+import { styled } from 'bumbag';
 import FullPageLoading from 'components/FullPageLoading';
 import { useGitHubAuthQuery } from 'generated';
 import Error from 'components/Error';

@@ -1,12 +1,8 @@
 {
-  "name": "server",
+  "name": "nextjs-nestjs-graphql",
   "version": "0.0.1",
   "description": "A NextJS and NestJS GraphQL starter pack",
   "author": "Tom Nagle",
   "private": true,
-  "license": "MIT",
-  "dependencies": {
-    "dom-to-image": "^2.6.0",
-    "dropperx": "^1.0.1"
-  }
+  "license": "MIT"
 }

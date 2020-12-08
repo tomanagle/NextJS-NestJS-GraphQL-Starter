@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { getDataFromTree } from '@apollo/react-ssr';
 import initApollo from './init-apollo';
 
-export default App => {
+const WithApolloClient = App => {
   class Apollo extends React.Component {
     static displayName = 'withApollo(App)';
 
@@ -68,3 +68,5 @@ export default App => {
 
   return Apollo;
 };
+
+export default WithApolloClient;

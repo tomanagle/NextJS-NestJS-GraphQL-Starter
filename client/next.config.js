@@ -1,12 +1,6 @@
 require('dotenv').config();
-const withLess = require('@zeit/next-less');
-const withCSS = require('@zeit/next-css');
-const lessToJS = require('less-vars-to-js');
 const withOffline = require('next-offline');
 const withManifest = require('next-manifest');
-const fs = require('fs');
-const path = require('path');
-const webpack = require('webpack');
 const compose = require('next-compose');
 const withSourceMaps = require('@zeit/next-source-maps');
 // Use the SentryWebpack plugin to upload the source maps during build step
@@ -17,10 +11,10 @@ const manifestConfig = {
   manifest: {
     output: './public/', // The folder where the manifest will be generated.
     version: version,
-    name: '',
-    short_name: '',
-    start_url: '',
-    Theme_color: '#ef7d25',
+    name: 'Snipd',
+    short_name: 'Snipd',
+    start_url: 'https://snipd.io',
+    Theme_color: '#D500F9',
     background_color: '#ffffff',
     icons: [
       {
@@ -72,7 +66,7 @@ const nextOfflineConfig = {
   transformManifest: manifest => ['/'].concat(manifest), // add the homepage to the cache
   // Trying to set NODE_ENV=production when running yarn dev causes a build-time error so we
   // turn on the SW in dev mode so that we can actually test it
-  generateInDevMode: true,
+  generateInDevMode: false,
   workboxOpts: {
     swDest: './public/service-worker.js',
     runtimeCaching: [
@@ -149,86 +143,15 @@ const sentryConfig = {
   }
 };
 
-// Where your antd-custom.less file lives
-const themeVariables = lessToJS(
-  fs.readFileSync(path.resolve(__dirname, './public/theme.less'), 'utf8')
-);
-
-const configFile = require('path').resolve(
-  process.cwd(),
-  process.env.CONFIG_PATH || '.env'
-);
-
-require('dotenv').config({ path: configFile });
-
-// fix: prevents error when .less files are required by node
-if (typeof require !== 'undefined') {
-  require.extensions['.less'] = file => {};
-}
-
 const config = compose([
   [withSourceMaps, sentryConfig],
   [withManifest, manifestConfig],
-  [withOffline, nextOfflineConfig],
-  [
-    withCSS,
-    {
-      cssModules: true,
-      cssLoaderOptions: {
-        importLoaders: 1,
-        localIdentName: '[local]___[hash:base64:5]'
-      }
-    }
-  ],
-  [
-    withLess,
-    {
-      lessLoaderOptions: {
-        javascriptEnabled: true,
-        modifyVars: themeVariables // make your antd custom effective
-      }
-    }
-  ],
-  {
-    webpack: (config, { isServer, buildId }) => {
-      config.plugins.push(
-        new webpack.DefinePlugin({
-          'process.env.SENTRY_RELEASE': JSON.stringify(buildId)
-        })
-      );
-
-      if (!isServer) {
-        config.resolve.alias['@sentry/node'] = '@sentry/browser';
-      }
-
-      if (isServer) {
-        const antStyles = /antd\/.*?\/style.*?/;
-        const origExternals = [...config.externals];
-        config.externals = [
-          (context, request, callback) => {
-            if (request.match(antStyles)) return callback();
-            if (typeof origExternals[0] === 'function') {
-              origExternals[0](context, request, callback);
-            } else {
-              callback();
-            }
-          },
-          ...(typeof origExternals[0] === 'function' ? [] : origExternals)
-        ];
-
-        config.plugins.push(new webpack.IgnorePlugin(/pages.*\/test.*/));
-
-        config.module.rules.unshift({
-          test: antStyles,
-          use: 'null-loader'
-        });
-      }
-      return config;
-    }
-  }
+  [withOffline, nextOfflineConfig]
 ]);
 
 config.excludeFile = str => /\*.{spec,test}.js/.test(str);
+
+config.poweredByHeader = false;
 
 config.publicRuntimeConfig = {
   CLIENT_BASE_URL: process.env.CLIENT_BASE_URL,
@@ -237,25 +160,19 @@ config.publicRuntimeConfig = {
 
   // Google Analytics UA-
   GA_ID: process.env.GA_ID || '',
-
   SENTRY_DSN: process.env.SENTRY_DSN,
-
   BROWSER_API_ENDPOINT: process.env.BROWSER_API_ENDPOINT,
-
   GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
-
   CLIENT_DOMAIN: process.env.CLIENT_DOMAIN || `http://localhost:3000`,
-
-  REDDIT_CLIENT_ID: process.env.REDDIT_CLIENT_ID,
-
-  SITE_NAME: process.env.SITE_NAME || 'NextJS NestJS GraphQL Starter',
-
-  TWITTER_HANDLE: process.env.TWITTER_HANDLE
+  REDDIT_CLIENT_ID: process.env.REDDIT_CLIENT_ID
 };
 
 config.serverRuntimeConfig = {
   SERVER_API_ENDPOINT:
     process.env.SERVER_API_ENDPOINT || 'http://localhost:5000/graphql'
 };
+
+config.assetPrefix =
+  process.env.NODE_ENV === 'production' ? 'https://static.example.com' : '';
 
 module.exports = config;

@@ -1,6 +1,5 @@
 import * as Sentry from '@sentry/node';
 import { get } from 'lodash';
-
 import { SENTRY_DSN, IS_SERVER, IS_DEV, ENV } from 'config/env';
 
 function initSentry({ user }) {

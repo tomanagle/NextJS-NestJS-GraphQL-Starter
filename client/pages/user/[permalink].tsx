@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { get } from 'lodash';
-import { Spin, Avatar, Typography, Row, Col, Divider, Skeleton } from 'antd';
 import Error from 'next/error';
-import styled from 'styled-components';
+import { styled } from 'bumbag';
 import App from 'components/App';
 import ListPosts from 'containers/Posts';
 import { useUserQuery } from 'generated';

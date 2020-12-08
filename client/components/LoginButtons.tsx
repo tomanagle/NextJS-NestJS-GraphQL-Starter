@@ -2,9 +2,7 @@ import * as React from 'react';
 import GitHubLogin from 'components/auth/GitHubLogin';
 import RedditLogin from 'components/auth/RedditLogin';
 import GoogleLogin from 'components/auth/GoogleLogin';
-import styled from 'styled-components';
-import Paragraph from 'antd/lib/skeleton/Paragraph';
-import { Typography } from 'antd';
+import { styled, Heading } from 'bumbag';
 
 const Wrapper = styled.div`
   display: flex;
@@ -19,10 +17,10 @@ const Wrapper = styled.div`
   border-radius: 0.5rem;
 `;
 
-function LoginButtons() {
+function LoginButtons({ heading = 'Login with one of the following:' }) {
   return (
     <Wrapper className="login-buttons-wrapper">
-      <Typography.Text>Login with one of the following:</Typography.Text>
+      <Heading fontSize="400">{heading}</Heading>
       <br />
       <GitHubLogin />
       <br />

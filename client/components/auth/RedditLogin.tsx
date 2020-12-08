@@ -1,9 +1,15 @@
 import * as React from 'react';
-import { RedditOutlined } from '@ant-design/icons';
-import { Button, Tooltip } from 'antd';
-import { CLIENT_DOMAIN, REDDIT_CLIENT_ID } from 'config/env';
+import { Button, Tooltip, Text } from 'bumbag';
+import { useRouter } from 'next/router';
+import { CLIENT_DOMAIN, REDDIT_CLIENT_ID } from '../../config/env';
 
-const GitHubLogin = ({ text = 'Reddit login', redirect = '/' }) => {
+const GitHubLogin = ({
+  text = 'Login with Reddit',
+  redirect = '/'
+}: {
+  text?: string;
+  redirect?: string;
+}) => {
   const TYPE = 'code';
   const SCOPE_STRING = 'identity';
 
@@ -12,7 +18,7 @@ const GitHubLogin = ({ text = 'Reddit login', redirect = '/' }) => {
     .substring(7);
   const DURATION = 'temporary';
 
-  const REDIRECT_URI = `${CLIENT_DOMAIN}/login/reddit`;
+  const REDIRECT_URI = `${CLIENT_DOMAIN}/auth/reddit`;
 
   const href = `https://www.reddit.com/api/v1/authorize?client_id=${REDDIT_CLIENT_ID}&response_type=${TYPE}&state=${RANDOM_STRING}&redirect_uri=${REDIRECT_URI}&duration=${DURATION}&scope=${SCOPE_STRING}`;
 
@@ -31,23 +37,28 @@ const GitHubLogin = ({ text = 'Reddit login', redirect = '/' }) => {
       clearInterval(checkConnect);
 
       if (!reloaded) {
-        window.location.href = redirect;
+        window.location.replace(redirect);
         reloaded = true;
       }
     }, 100);
   }
 
   return (
-    <Tooltip title="Login or register with your Reddit account">
-      <Button
-        type="ghost"
-        style={{ backgroundColor: '#ff4500', color: '#fff' }}
-        onClick={handleClick}
-        icon={<RedditOutlined style={{ fontSize: '18px' }} />}
-      >
-        <span className="social-login-wrapper__text">{text}</span>
-      </Button>
-    </Tooltip>
+    <>
+      <Tooltip content="Login or register with your Reddit account">
+        <Button
+          width="100%"
+          variant="ghost"
+          onClick={handleClick}
+          iconBefore="b-reddit"
+          iconBeforeProps={{
+            color: 'primary'
+          }}
+        >
+          <Text color="primary">{text}</Text>
+        </Button>
+      </Tooltip>
+    </>
   );
 };
 

@@ -1,15 +1,14 @@
 import * as React from 'react';
 import { get } from 'lodash';
-import { GithubOutlined } from '@ant-design/icons';
-import { Button, Tooltip } from 'antd';
+import { Button, Tooltip, Text } from 'bumbag';
 import { useRouter } from 'next/router';
-import { GITHUB_CLIENT_ID, CLIENT_DOMAIN } from 'config/env';
+import { GITHUB_CLIENT_ID, CLIENT_DOMAIN } from '../../config/env';
 
-const GitHubLogin = ({ text = 'GitHub login', redirect = '/' }) => {
+const GitHubLogin = ({ text = 'Login with GitHub', redirect = '/' }) => {
   const router = useRouter();
   const asPath = get(router, 'asPath', '/');
 
-  const href = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&scope=user:email&redirect_uri=${CLIENT_DOMAIN}/login/github?redirect=${asPath}`;
+  const href = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&scope=user:email&redirect_uri=${CLIENT_DOMAIN}/auth/github?redirect=${asPath}`;
 
   let checkConnect;
   let win;
@@ -25,23 +24,28 @@ const GitHubLogin = ({ text = 'GitHub login', redirect = '/' }) => {
       if (!win || !win.closed) return;
       clearInterval(checkConnect);
       if (!reloaded) {
-        window.location.href = redirect;
+        window.location.replace(redirect);
         reloaded = true;
       }
     }, 100);
   }
 
   return (
-    <Tooltip title="Login or register with your GitHub account">
-      <Button
-        type="ghost"
-        style={{ backgroundColor: '#000', color: '#fff' }}
-        onClick={handleClick}
-        icon={<GithubOutlined style={{ fontSize: '18px' }} />}
-      >
-        <span className="social-login-wrapper__text">{text}</span>
-      </Button>
-    </Tooltip>
+    <>
+      <Tooltip content="Login or register with your GitHub account">
+        <Button
+          width="100%"
+          variant="ghost"
+          onClick={handleClick}
+          iconBefore="b-github"
+          iconBeforeProps={{
+            color: 'primary'
+          }}
+        >
+          <Text color="primary">{text}</Text>
+        </Button>
+      </Tooltip>
+    </>
   );
 };
 

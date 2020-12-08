@@ -13,13 +13,6 @@
       }
     ],
     [
-      "import",
-      {
-        "libraryName": "antd",
-        "style": true
-      }
-    ],
-    [
       "styled-components",
       {
         "ssr": true,

@@ -3,7 +3,6 @@ import { get, isEqual, omit } from 'lodash';
 import * as Yup from 'yup';
 import emailValidator from 'email-validator';
 import { useMeQuery, useUpdateUserMutation } from 'generated';
-import { Input, Button, Skeleton, Form, message, Alert } from 'antd';
 import { Field } from 'formik';
 import FormWrapper from 'components/FormWrapper';
 import App from 'components/App';

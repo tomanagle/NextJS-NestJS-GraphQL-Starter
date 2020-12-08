@@ -6,8 +6,10 @@ import * as ApolloReactComponents from '@apollo/react-components';
 import * as ApolloReactHoc from '@apollo/react-hoc';
 import * as ApolloReactHooks from '@apollo/react-hooks';
 export type Maybe<T> = T | null;
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
-
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -95,9 +97,9 @@ export type User = {
   readonly role: Roles;
 };
 
-export type UpdateUserMutationVariables = {
+export type UpdateUserMutationVariables = Exact<{
   input: UpdateUserInput;
-};
+}>;
 
 
 export type UpdateUserMutation = (
@@ -108,9 +110,9 @@ export type UpdateUserMutation = (
   ) }
 );
 
-export type GitHubAuthQueryVariables = {
+export type GitHubAuthQueryVariables = Exact<{
   input: GitHubAuthInput;
-};
+}>;
 
 
 export type GitHubAuthQuery = (
@@ -121,9 +123,9 @@ export type GitHubAuthQuery = (
   ) }
 );
 
-export type RedditAuthQueryVariables = {
+export type RedditAuthQueryVariables = Exact<{
   input: RedditAuthInput;
-};
+}>;
 
 
 export type RedditAuthQuery = (
@@ -134,9 +136,9 @@ export type RedditAuthQuery = (
   ) }
 );
 
-export type GoogleAuthQueryVariables = {
+export type GoogleAuthQueryVariables = Exact<{
   input: RedditAuthInput;
-};
+}>;
 
 
 export type GoogleAuthQuery = (
@@ -147,7 +149,7 @@ export type GoogleAuthQuery = (
   ) }
 );
 
-export type MeQueryVariables = {};
+export type MeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type MeQuery = (
@@ -158,9 +160,9 @@ export type MeQuery = (
   )> }
 );
 
-export type UserQueryVariables = {
+export type UserQueryVariables = Exact<{
   input: GetUserInput;
-};
+}>;
 
 
 export type UserQuery = (
@@ -171,7 +173,7 @@ export type UserQuery = (
   )> }
 );
 
-export type GetGoogleAuthUrlQueryVariables = {};
+export type GetGoogleAuthUrlQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetGoogleAuthUrlQuery = (

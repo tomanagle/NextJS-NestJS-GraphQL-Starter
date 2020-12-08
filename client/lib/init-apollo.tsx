@@ -127,7 +127,7 @@ const create = (initialState, headers) => {
   });
 };
 
-export default (initialState, headers) => {
+const InitApollo = (initialState, headers) => {
   if (!process.browser) {
     return create(initialState, headers);
   }
@@ -137,3 +137,5 @@ export default (initialState, headers) => {
 
   return apolloClient;
 };
+
+export default InitApollo;

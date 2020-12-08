@@ -41,6 +41,6 @@ const apolloServerSentryPlugin = {
       },
     };
   },
-} as ApolloServerPlugin;
+};
 
 export default apolloServerSentryPlugin;

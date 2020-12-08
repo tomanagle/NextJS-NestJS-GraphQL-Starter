@@ -1,14 +1,12 @@
 import * as React from 'react';
 import { get } from 'lodash';
-import { GoogleOutlined } from '@ant-design/icons';
-import { Button, Tooltip } from 'antd';
+import { Button, Tooltip, Text } from 'bumbag';
 import { useRouter } from 'next/router';
 import { useGetGoogleAuthUrlQuery } from 'generated';
 
 function GoogleLoginLink({ text = 'Login with Google', redirect = '/' }) {
   const { data } = useGetGoogleAuthUrlQuery();
   const href = get(data, 'getGoogleAuthURL', '');
-  const router = useRouter();
 
   let checkConnect;
   let win;
@@ -24,23 +22,28 @@ function GoogleLoginLink({ text = 'Login with Google', redirect = '/' }) {
       if (!win || !win.closed) return;
       clearInterval(checkConnect);
       if (!reloaded) {
-        window.location.href = redirect;
+        window.location.replace(redirect);
         reloaded = true;
       }
     }, 100);
   }
 
   return (
-    <Tooltip title="Login or register with your Google account">
-      <Button
-        type="ghost"
-        style={{ backgroundColor: '#4185f3', color: '#fff' }}
-        onClick={handleClick}
-        icon={<GoogleOutlined style={{ fontSize: '18px' }} />}
-      >
-        <span className="social-login-wrapper__text">{text}</span>
-      </Button>
-    </Tooltip>
+    <>
+      <Tooltip content="Login or register with your Google account">
+        <Button
+          variant="ghost"
+          width="100%"
+          onClick={handleClick}
+          iconBefore="b-google"
+          iconBeforeProps={{
+            color: 'primary'
+          }}
+        >
+          <Text color="primary">{text}</Text>
+        </Button>
+      </Tooltip>
+    </>
   );
 }
 

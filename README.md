@@ -10,7 +10,7 @@ A NextJS frontend and NextJS backend GraphQL starter pack that includes GitHub &
 
 ### Frontend
 * [NextJS](https://nextjs.org/)
-* [Ant Design](https://ant.design/components/overview/)
+* [Bumbag](https://bumbag.style/)
 * [styled-components](https://styled-components.com/)
 * [Apollo Client](https://www.apollographql.com/docs/react/)
 * [GraphQL Code Generator](https://graphql-code-generator.com/)

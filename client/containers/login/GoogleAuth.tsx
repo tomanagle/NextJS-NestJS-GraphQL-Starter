@@ -1,6 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-import { message } from 'antd';
+import { styled } from 'bumbag';
 import FullPageLoading from 'components/FullPageLoading';
 import { useGoogleAuthQuery } from 'generated';
 import Error from 'components/Error';
