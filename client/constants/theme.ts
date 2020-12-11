@@ -1,4 +1,8 @@
-import { ThemeConfig, css, palette } from 'bumbag';
+/*
+ * Bumbag theme docs: https://bumbag.style/theming/
+ */
+
+import { ThemeConfig, css } from 'bumbag';
 import {
   faComment,
   faThumbsUp,

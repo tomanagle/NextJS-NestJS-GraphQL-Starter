@@ -1,3 +1,4 @@
+import { Link } from 'bumbag';
 import App from 'components/App';
 import PageContainer from 'containers/Page';
 import { CLIENT_DOMAIN, SITE_NAME } from 'config/env';
@@ -34,13 +35,13 @@ const CookiePolicyPage = () => {
 
         <p>
           For more general information on cookies, please read{' '}
-          <a
+          <Link
             target="_blank"
             rel="noopener noreferrer nofollow"
             href="https://www.cookieconsent.com/what-are-cookies/"
           >
             "What Are Cookies"
-          </a>
+          </Link>
           .
         </p>
 

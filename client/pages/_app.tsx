@@ -12,7 +12,7 @@ import { GA_ID } from '../constants';
 import initSentry from '../lib/sentry';
 import jwt from 'jsonwebtoken';
 import parseCookie from 'helpers/parseCookie';
-import bbTheme from '../constants/bbTheme';
+import theme from '../constants/theme';
 
 export const Context = React.createContext({ ua: '' });
 
@@ -59,7 +59,7 @@ class MyApp extends App {
     return (
       <Context.Provider value={{ ua: pageProps.ua }}>
         <ApolloProvider client={apolloClient}>
-          <BumbagProvider isSSR theme={bbTheme}>
+          <BumbagProvider isSSR theme={theme}>
             <Component {...pageProps} />
             <ToastManager />
           </BumbagProvider>

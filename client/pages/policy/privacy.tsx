@@ -1,3 +1,4 @@
+import { Link as BBLink } from 'bumbag';
 import App from 'components/App';
 import PageContainer from 'containers/Page';
 import Link from 'next/link';
@@ -17,8 +18,8 @@ const CookiePolicyPage = () => {
           Your privacy is important to us. It is {SITE_NAME}'s policy to respect
           your privacy regarding any information we may collect from you across
           our website,{' '}
-          <Link href="/">
-            <a href={`${CLIENT_DOMAIN}`}>{CLIENT_DOMAIN}</a>
+          <Link href="/" passHref>
+            <BBLink href={`${CLIENT_DOMAIN}`}>{CLIENT_DOMAIN}</BBLink>
           </Link>
           , and other sites we own and operate.
         </p>

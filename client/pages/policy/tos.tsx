@@ -1,5 +1,7 @@
-import App from '../../components/App';
-import PageContainer from '../../containers/Page';
+import { Link } from 'bumbag';
+
+import App from 'components/App';
+import PageContainer from 'containers/Page';
 import { CLIENT_DOMAIN, SITE_NAME } from 'config/env';
 
 const TOSPage = () => {
@@ -10,10 +12,10 @@ const TOSPage = () => {
         <h3>1. Terms</h3>
         <p>
           By accessing the website at{' '}
-          <a href={`${CLIENT_DOMAIN}`}>{CLIENT_DOMAIN}</a>, you are agreeing to
-          be bound by these terms of service, all applicable laws and
-          regulations, and agree that you are responsible for compliance with
-          any applicable local laws. If you do not agree with any of these
+          <Link href={`${CLIENT_DOMAIN}`}>{CLIENT_DOMAIN}</Link>, you are
+          agreeing to be bound by these terms of service, all applicable laws
+          and regulations, and agree that you are responsible for compliance
+          with any applicable local laws. If you do not agree with any of these
           terms, you are prohibited from using or accessing this site. The
           materials contained in this website are protected by applicable
           copyright and trademark law.
