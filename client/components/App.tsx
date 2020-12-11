@@ -10,6 +10,7 @@ import { CLIENT_DOMAIN, SITE_NAME, TWITTER_HANDLE } from 'config/env';
 import manifest from 'public/manifest.json';
 import Login from 'components/Login';
 import Navigation from 'components/Navigation';
+import Footer from 'components/Footer';
 
 const RenderBreadcrumbs = ({ breadcrumbs, asPath }) => {
   if (!breadcrumbs.length) {
@@ -132,7 +133,13 @@ const App = ({
         {requiresUser && !me ? (
           <Login />
         ) : (
-          <Box padding="major-2">{children}</Box>
+          <>
+            <Box use="main" flex="1" padding="major-2">
+              {children}
+            </Box>
+
+            {showFooter && <Footer />}
+          </>
         )}
       </PageWithHeader>
     </>
