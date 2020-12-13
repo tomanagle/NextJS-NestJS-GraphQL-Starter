@@ -12,7 +12,7 @@ const CookiePolicyPage = () => {
     across our website`}
     >
       <PageContainer>
-        <h1>Cookie Policy for {SITE_NAME}</h1>
+        <h1>Cookie Policy</h1>
 
         <p>
           This is the Cookie Policy for {SITE_NAME}, accessible from{' '}

@@ -51,6 +51,7 @@
     "next-compose": "^0.0.2",
     "next-dark-mode": "^2.2.4",
     "next-ga": "^2.3.4",
+    "next-i18next": "^7.0.1",
     "next-manifest": "^3.0.1",
     "next-offline": "^5.0.0",
     "next-seo": "^4.5.0",

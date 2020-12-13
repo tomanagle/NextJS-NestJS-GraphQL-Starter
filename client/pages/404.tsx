@@ -1,18 +1,24 @@
 import * as React from 'react';
-import { styled } from 'bumbag';
+import { Image, Flex, Text, Button, Heading } from 'bumbag';
 import App from 'components/App';
 import Link from 'next/link';
-
-const IMG = styled.img`
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-`;
+import useTranslation from 'locales/useTranslation';
 
 export default function Custom404() {
+  const { t } = useTranslation();
+
   return (
     <App title="Not found" description="">
-      <IMG src="404.svg" alt="" />
+      <Flex alignItems="center" flexDirection="column">
+        <Heading fontSize="500" marginTop="major-2" marginBottom="major-2">
+          {t('page.notFound.body')}
+        </Heading>
+        <Image maxWidth="42.5rem" src="404.svg" alt="" />
+
+        <Link href="/" passHref>
+          <Button use="a">{t('page.notFound.callToAction')}</Button>
+        </Link>
+      </Flex>
     </App>
   );
 }

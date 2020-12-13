@@ -164,7 +164,8 @@ config.publicRuntimeConfig = {
   BROWSER_API_ENDPOINT: process.env.BROWSER_API_ENDPOINT,
   GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
   CLIENT_DOMAIN: process.env.CLIENT_DOMAIN || `http://localhost:3000`,
-  REDDIT_CLIENT_ID: process.env.REDDIT_CLIENT_ID
+  REDDIT_CLIENT_ID: process.env.REDDIT_CLIENT_ID,
+  SITE_NAME: process.env.SITE_NAME || ''
 };
 
 config.serverRuntimeConfig = {
