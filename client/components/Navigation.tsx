@@ -1,6 +1,6 @@
 import React from 'react';
 import { get } from 'lodash';
-import { TopNav, Image, Button } from 'bumbag';
+import { TopNav, Image, Button, Link as BBLink } from 'bumbag';
 import Link from 'next/link';
 import { useMeQuery } from 'generated';
 
@@ -12,13 +12,19 @@ function Navigation() {
   return (
     <TopNav>
       <TopNav.Section>
-        <TopNav.Item href="/" fontWeight="semibold">
-          <Image src="/logo.png" height="44px" />
-        </TopNav.Item>
+        <Link href="/" passHref>
+          <TopNav.Item href="/" fontWeight="semibold">
+            <Image src="/logo.png" height="44px" />
+          </TopNav.Item>
+        </Link>
       </TopNav.Section>
       <TopNav.Section marginRight="major-2">
         {me ? (
-          <TopNav.Item>{me.name}</TopNav.Item>
+          <TopNav.Item>
+            <Link href="/profile" passHref>
+              <BBLink>{me.name}</BBLink>
+            </Link>
+          </TopNav.Item>
         ) : (
           <>
             <TopNav.Item>

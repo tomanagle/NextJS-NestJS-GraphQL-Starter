@@ -12,6 +12,8 @@ import Login from 'components/Login';
 import Navigation from 'components/Navigation';
 import Footer from 'components/Footer';
 
+const pagePadding = 'major-2';
+
 const RenderBreadcrumbs = ({ breadcrumbs, asPath }) => {
   if (!breadcrumbs.length) {
     return null;
@@ -34,18 +36,21 @@ const RenderBreadcrumbs = ({ breadcrumbs, asPath }) => {
           };
         })}
       />
-      <Breadcrumb>
+      <Breadcrumb padding={pagePadding}>
         <Breadcrumb.Item>
-          <Link href="/" as="/">
-            <a>Home</a>
+          <Link href="/" as="/" passHref>
+            <Breadcrumb.Link>Home</Breadcrumb.Link>
           </Link>
         </Breadcrumb.Item>
-        {(breadcrumbs || []).map((bc: BreadcrumbItem) => {
+        {(breadcrumbs || []).map((bc: BreadcrumbItem, index) => {
           return (
-            <Breadcrumb.Item key={`breadcrumb_${bc.label}_${bc.as}`}>
+            <Breadcrumb.Item
+              key={`breadcrumb_${bc.label}_${bc.as}`}
+              isCurrent={breadcrumbs.length - 1 === index}
+            >
               {bc.href && bc.as ? (
-                <Link href={bc.href} as={bc.as}>
-                  <a>{bc.label}</a>
+                <Link href={bc.href} as={bc.as} passHref>
+                  <Breadcrumb.Link>{bc.label}</Breadcrumb.Link>
                 </Link>
               ) : (
                 bc.label
@@ -134,11 +139,12 @@ const App = ({
           <Login />
         ) : (
           <>
-            <Box use="main" flex="1" padding="major-2">
+            <RenderBreadcrumbs breadcrumbs={breadcrumbs} asPath={asPath} />
+            <Box use="main" flex="1" padding={pagePadding}>
               {children}
             </Box>
 
-            {showFooter && <Footer />}
+            {showFooter && <Footer pagePadding={pagePadding} />}
           </>
         )}
       </PageWithHeader>

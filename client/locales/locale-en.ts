@@ -34,6 +34,29 @@ export default {
     notFound: {
       body: 'The page you are looking for does not exist.',
       callToAction: 'Return home'
+    },
+    profile: {
+      title: 'Profile',
+      description: '',
+      form: {
+        name: {
+          label: 'Name',
+          placeholder: 'Jane Doe'
+        },
+        email: {
+          label: 'Email',
+          placeholder: 'test@example.com'
+        },
+        bio: {
+          label: 'Bio',
+          placeholder: 'I am a...'
+        },
+        callToAction: 'SAVE SETTINGS',
+        onSuccess: {
+          title: 'Profile updated',
+          message: 'Your profile has successfully been updated'
+        }
+      }
     }
   }
 };

@@ -1,54 +1,45 @@
 import * as React from 'react';
 import { get, isEqual, omit } from 'lodash';
+import {
+  Button,
+  InputField,
+  TextareaField,
+  FieldStack,
+  useToasts,
+  Flex
+} from 'bumbag';
+import useTranslation from 'locales/useTranslation';
 import * as Yup from 'yup';
+import { useForm, Controller } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import emailValidator from 'email-validator';
 import { useMeQuery, useUpdateUserMutation } from 'generated';
 import { Field } from 'formik';
-import FormWrapper from 'components/FormWrapper';
 import App from 'components/App';
 import Error from 'components/Error';
 
 function SettingsPage() {
+  const { t } = useTranslation();
+  const toasts = useToasts();
   const { data: meData, loading } = useMeQuery();
   const me = get(meData, 'me', null);
 
   const [updateUser, { loading: updating, error }] = useUpdateUserMutation({
     onCompleted: () => {
-      message.success('Successfully updated profile');
+      toasts.success({
+        title: t('page.profile.form.onSuccess.title'),
+        message: t('page.profile.form.onSuccess.message')
+      });
     }
   });
 
-  const initialValues = me
+  const defaultValues = me
     ? {
         email: me.email,
         name: me.name,
         bio: me.bio || ''
       }
     : {};
-
-  function valuesHaveChanged({ initialValues, currentValues }) {
-    return !isEqual(initialValues, currentValues);
-  }
-
-  function handleSubmit(values) {
-    if (
-      !valuesHaveChanged({
-        initialValues,
-        currentValues: omit(values, 'emailDisabled')
-      })
-    ) {
-      return;
-    }
-    return updateUser({
-      variables: {
-        input: {
-          email: values.email,
-          name: values.name,
-          bio: values.bio
-        }
-      }
-    });
-  }
 
   const validationSchema = Yup.object({
     email: Yup.string()
@@ -59,99 +50,86 @@ function SettingsPage() {
     bio: Yup.string()
   });
 
+  const { handleSubmit, watch, errors, control } = useForm({
+    defaultValues,
+    resolver: yupResolver(validationSchema)
+  });
+  const onSubmit = values => {
+    return updateUser({
+      variables: {
+        input: {
+          email: values.email,
+          name: values.name,
+          bio: values.bio
+        }
+      }
+    });
+  };
+
+  if (loading) {
+    return <p>Loading ...</p>;
+  }
+
+  if (!loading && !me) {
+    return <p>not found</p>;
+  }
+
   return (
     <App
-      title="Profile"
-      description=""
-      breadcrumbs={[{ label: 'Profile' }]}
+      title={t('page.profile.title')}
+      description={t('page.profile.description')}
+      breadcrumbs={[{ label: t('page.profile.title') }]}
       requiresUser
     >
-      {loading || !me ? (
-        <Skeleton />
-      ) : (
-        <FormWrapper
-          validationSchema={validationSchema}
-          onSubmit={v => handleSubmit(v)}
-          initialValues={{
-            ...initialValues,
-            emailDisabled: emailValidator.validate(me.email)
-          }}
-        >
-          {({ errors, setFieldValue, values }) => {
-            return (
-              <>
-                {error && <Error error={error} />}
-                <Form.Item
-                  className="medium-width"
-                  label="Name"
-                  required
-                  hasFeedback={!!errors.name}
-                  validateStatus={errors.name ? 'error' : null}
-                  help={errors.title ? errors.title : `What's your name?`}
-                >
-                  <Field
-                    required
-                    value={values.name}
-                    name="name"
-                    placeholder="Display name"
-                    component={Input}
-                    onChange={e => setFieldValue('name', e.target.value)}
-                  />
-                </Form.Item>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <FieldStack>
+          <Controller
+            control={control}
+            as={InputField}
+            isRequired
+            name="name"
+            autoComplete="name"
+            label={t('page.profile.form.name.label')}
+            placeholder={t('page.profile.form.name.placeholder')}
+            defaultValue={defaultValues.name || ''}
+            state={get(errors, 'name.message') ? 'danger' : undefined}
+          />
 
-                <Form.Item
-                  className="medium-width"
-                  label="Email"
-                  required
-                  hasFeedback={!!errors.email}
-                  validateStatus={errors.email ? 'error' : null}
-                  help={errors.email ? errors.email : `What's your email?`}
-                >
-                  <Field
-                    type="email"
-                    required
-                    disabled={values.emailDisabled}
-                    name="email"
-                    value={values.email}
-                    placeholder="Email address"
-                    component={Input}
-                    onChange={e => setFieldValue('email', e.target.value)}
-                  />
-                </Form.Item>
+          <Controller
+            control={control}
+            as={InputField}
+            isRequired
+            name="email"
+            type="email"
+            autoComplete="email"
+            label={t('page.profile.form.email.label')}
+            placeholder={t('page.profile.form.email.placeholder')}
+            defaultValue={defaultValues.email || ''}
+            state={get(errors, 'email.message') ? 'danger' : undefined}
+          />
 
-                <Form.Item
-                  className="medium-width"
-                  label="Bio"
-                  hasFeedback={!!errors.bio}
-                  validateStatus={errors.bio ? 'error' : null}
-                  help={
-                    errors.bio
-                      ? errors.bio
-                      : `Tell us something interesting about you`
-                  }
-                >
-                  <Field
-                    required
-                    name="bio"
-                    placeholder="A short introduction to yourself"
-                    component={Input.TextArea}
-                    onChange={e => setFieldValue('bio', e.target.value)}
-                  />
-                </Form.Item>
+          <Controller
+            control={control}
+            as={TextareaField}
+            name="bio"
+            label={t('page.profile.form.bio.label')}
+            placeholder={t('page.profile.form.bio.placeholder')}
+            defaultValue={defaultValues.bio || ''}
+            state={get(errors, 'bio.message') ? 'danger' : undefined}
+          />
+        </FieldStack>
 
-                <Button
-                  loading={updating}
-                  disabled={updating}
-                  type="primary"
-                  htmlType="submit"
-                >
-                  SAVE SETTINGS
-                </Button>
-              </>
-            );
-          }}
-        </FormWrapper>
-      )}
+        <Flex justifyContent="flex-end">
+          <Button
+            marginTop="major-2"
+            isLoading={updating}
+            disabled={updating}
+            type="submit"
+          >
+            {t('page.profile.form.callToAction')}
+          </Button>
+        </Flex>
+      </form>
     </App>
   );
 }

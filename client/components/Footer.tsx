@@ -2,9 +2,9 @@ import { Box, List, Flex, Link as BBLink } from 'bumbag';
 import Link from 'next/link';
 import ToggleColorMode from 'components/ToggleColorMode';
 
-function Footer() {
+function Footer({ pagePadding }) {
   return (
-    <Box use="footer" padding="major-2">
+    <Box use="footer" padding={pagePadding}>
       <Flex alignItems="center">
         <List orientation="horizontal" flex="1">
           <List.Item>

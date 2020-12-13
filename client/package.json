@@ -18,6 +18,7 @@
     "@apollo/react-ssr": "^3.1.4",
     "@fortawesome/free-brands-svg-icons": "^5.15.1",
     "@fortawesome/free-regular-svg-icons": "^5.15.1",
+    "@hookform/resolvers": "^1.1.2",
     "@sentry/browser": "^5.28.0",
     "@sentry/node": "^5.28.0",
     "@sentry/webpack-plugin": "^1.11.1",
@@ -58,13 +59,14 @@
     "nprogress": "^0.2.0",
     "react": "^17.0.1",
     "react-dom": "^16.13.1",
+    "react-hook-form": "^6.13.0",
     "react-html-parser": "^2.0.2",
     "react-i18next": "^11.3.4",
     "react-simple-code-editor": "^0.11.0",
     "react-toastify": "^6.0.0-rc.2-1",
     "showdown": "^1.9.1",
     "styled-components": "^5.2.1",
-    "yup": "^0.29.1"
+    "yup": "^0.32.8"
   },
   "devDependencies": {
     "@babel/helper-call-delegate": "^7.8.7",
