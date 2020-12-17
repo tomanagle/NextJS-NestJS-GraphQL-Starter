@@ -2,22 +2,26 @@ import { Link as BBLink } from 'bumbag';
 import App from 'components/App';
 import PageContainer from 'containers/Page';
 import Link from 'next/link';
-import { CLIENT_DOMAIN, SITE_NAME } from 'config/env';
+import { CLIENT_DOMAIN } from 'config/env';
+import useTranslation from 'locales/useTranslation';
 
 const CookiePolicyPage = () => {
+  const { t } = useTranslation();
   return (
     <App
       title="Privacy Policy"
-      description={`Your privacy is important to us. It is ${SITE_NAME}'s policy to
+      description={`Your privacy is important to us. It is ${t(
+        'global.siteTitle'
+      )}'s policy to
     respect your privacy regarding any information we may collect from you
     across our website`}
     >
       <PageContainer>
         <h1>Privacy Policy</h1>
         <p>
-          Your privacy is important to us. It is {SITE_NAME}'s policy to respect
-          your privacy regarding any information we may collect from you across
-          our website,{' '}
+          Your privacy is important to us. It is {t('global.siteTitle')}'s
+          policy to respect your privacy regarding any information we may
+          collect from you across our website,{' '}
           <Link href="/" passHref>
             <BBLink href={`${CLIENT_DOMAIN}`}>{CLIENT_DOMAIN}</BBLink>
           </Link>

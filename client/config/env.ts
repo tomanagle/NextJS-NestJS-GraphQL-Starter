@@ -9,7 +9,6 @@ export const ENV = process.env.NODE_ENV || 'development';
 
 export const {
   CLIENT_DOMAIN,
-  SITE_NAME,
   BROWSER_API_ENDPOINT,
   SENTRY_DSN,
   GITHUB_CLIENT_ID,

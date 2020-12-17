@@ -1,12 +1,10 @@
 import React from 'react';
-import App from 'next/app';
 import withGA from 'next-ga';
 import NProgress from 'nprogress';
 import { get } from 'lodash';
 import { Provider as BumbagProvider, ToastManager } from 'bumbag';
 import { ApolloProvider } from '@apollo/react-hooks';
 import Router from 'next/router';
-import withDarkMode from 'next-dark-mode';
 import withApolloClient from '../lib/with-apollo-client';
 import { GA_ID } from '../constants';
 import initSentry from '../lib/sentry';
@@ -23,50 +21,42 @@ Router.events.on('routeChangeStart', () => {
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
-class MyApp extends App {
-  static async getInitialProps({ Component, ctx }) {
-    const ua = get(ctx, 'req.headers[user-agent]', '');
-    const token = parseCookie({
-      cookie: get(ctx, 'req.headers.cookie', ''),
-      name: 'token'
-    });
+function MyApp({ Component, pageProps, apolloClient }) {
+  // const apolloClient = useApollo(pageProps.initialApolloState);
 
-    initSentry({ user: get(jwt.decode(token), 'user', null) });
-
-    let pageProps = {
-      query: null,
-      userContext: null,
-      ua
-    };
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
-
-    // this exposes the query to the user
-    pageProps.query = ctx.query;
-
-    return { pageProps };
-  }
-
-  componentDidMount() {
-    initSentry({ user: null });
-  }
-
-  render() {
-    // @ts-ignore
-    const { Component, pageProps, apolloClient } = this.props;
-
-    return (
-      <Context.Provider value={{ ua: pageProps.ua }}>
-        <ApolloProvider client={apolloClient}>
-          <BumbagProvider isSSR theme={theme}>
-            <Component {...pageProps} />
-            <ToastManager />
-          </BumbagProvider>
-        </ApolloProvider>
-      </Context.Provider>
-    );
-  }
+  return (
+    <Context.Provider value={{ ua: pageProps.ua }}>
+      <ApolloProvider client={apolloClient}>
+        <BumbagProvider isSSR theme={theme}>
+          <Component {...pageProps} />
+          <ToastManager />
+        </BumbagProvider>
+      </ApolloProvider>
+    </Context.Provider>
+  );
 }
 
-export default withGA(GA_ID, Router)(withApolloClient(withDarkMode(MyApp)));
+MyApp.getInitialProps = async ({ Component, ctx }) => {
+  const ua = get(ctx, 'req.headers[user-agent]', '');
+  const token = parseCookie({
+    cookie: get(ctx, 'req.headers.cookie', ''),
+    name: 'token'
+  });
+
+  initSentry({ user: get(jwt.decode(token), 'user', null) });
+
+  const initialProps = Component.getInitialProps
+    ? await Component.getInitialProps(ctx)
+    : {};
+
+  const pageProps = {
+    query: get(ctx, 'query', null),
+    userContext: null,
+    ua,
+    ...initialProps
+  };
+
+  return { pageProps };
+};
+
+export default withGA(GA_ID, Router)(withApolloClient(MyApp));

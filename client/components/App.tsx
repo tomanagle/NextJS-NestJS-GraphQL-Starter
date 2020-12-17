@@ -4,13 +4,14 @@ import { NextSeo, BreadcrumbJsonLd } from 'next-seo';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Link from 'next/link';
-import { PageWithHeader, Breadcrumb, Box } from 'bumbag';
+import { PageWithHeader, Breadcrumb, Box, useTheme } from 'bumbag';
 import { useMeQuery } from 'generated';
-import { CLIENT_DOMAIN, SITE_NAME, TWITTER_HANDLE } from 'config/env';
+import { CLIENT_DOMAIN } from 'config/env';
 import manifest from 'public/manifest.json';
 import Login from 'components/Login';
 import Navigation from 'components/Navigation';
 import Footer from 'components/Footer';
+import useTranslation from 'locales/useTranslation';
 
 const pagePadding = 'major-2';
 
@@ -92,7 +93,10 @@ const App = ({
   profile?: Profile;
   requiresUser?: boolean;
 }) => {
+  const { t } = useTranslation();
+  const { theme } = useTheme();
   const { data: meData } = useMeQuery();
+
   const me = get(meData, 'me');
   const router = useRouter();
   const asPath = get(router, 'asPath', '');
@@ -110,20 +114,24 @@ const App = ({
   return (
     <>
       <NextSeo
-        title={title ? `${title} | ${SITE_NAME}` : SITE_NAME}
+        title={
+          title ? `${title} | ${t('global.siteTitle')}` : t('global.siteTitle')
+        }
         description={description}
         canonical={`${CLIENT_DOMAIN}${asPath}`}
         openGraph={{
           ...profile,
           locale: 'en_IE',
           url: `${CLIENT_DOMAIN}${asPath}`,
-          title: title ? `${title} | ${SITE_NAME}` : SITE_NAME,
+          title: title
+            ? `${title} | ${t('global.siteTitle')}`
+            : t('global.siteTitle'),
           description,
-          site_name: SITE_NAME,
+          site_name: t('global.siteTitle'),
           images
         }}
         twitter={{
-          handle: `${TWITTER_HANDLE}`,
+          handle: t('global.twitterHandle'),
           cardType: 'summary_large_image'
         }}
       />
@@ -132,6 +140,9 @@ const App = ({
         <link rel="icon" href="/f.ico" />
         <meta name="description" content={description} />
         <link rel="shortcut icon" href="/f.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content={theme.palette.primary} />
+        <link rel="manifest" href="/manifest.json" />
       </Head>
 
       <PageWithHeader header={<Navigation />} border="default">

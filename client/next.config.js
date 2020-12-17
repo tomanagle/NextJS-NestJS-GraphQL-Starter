@@ -11,10 +11,9 @@ const manifestConfig = {
   manifest: {
     output: './public/', // The folder where the manifest will be generated.
     version: version,
-    name: 'Snipd',
-    short_name: 'Snipd',
-    start_url: 'https://snipd.io',
-    Theme_color: '#D500F9',
+    name: 'My site name',
+    short_name: 'Short name',
+    start_url: 'https://example.com',
     background_color: '#ffffff',
     icons: [
       {
@@ -164,8 +163,7 @@ config.publicRuntimeConfig = {
   BROWSER_API_ENDPOINT: process.env.BROWSER_API_ENDPOINT,
   GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
   CLIENT_DOMAIN: process.env.CLIENT_DOMAIN || `http://localhost:3000`,
-  REDDIT_CLIENT_ID: process.env.REDDIT_CLIENT_ID,
-  SITE_NAME: process.env.SITE_NAME || ''
+  REDDIT_CLIENT_ID: process.env.REDDIT_CLIENT_ID
 };
 
 config.serverRuntimeConfig = {

@@ -30,10 +30,16 @@
 //  - columns
 
 export default {
+  global: {
+    siteTitle: 'Acme inc',
+    siteShortName: 'A short name',
+    twitterHandle: '@example'
+  },
   page: {
     notFound: {
       body: 'The page you are looking for does not exist.',
-      callToAction: 'Return home'
+      callToAction: 'Return home',
+      title: 'Not found'
     },
     profile: {
       title: 'Profile',

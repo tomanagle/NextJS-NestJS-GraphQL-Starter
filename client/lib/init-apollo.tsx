@@ -48,44 +48,12 @@ const create = (initialState, headers) => {
   );
 
   // Create File Upload Link
-  // const isFile = value =>
-  //   (typeof File !== 'undefined' && value instanceof File) ||
-  //   (typeof Blob !== 'undefined' && value instanceof Blob);
 
   const httpLink = new BatchHttpLink({
     uri: IS_SERVER ? SERVER_API_ENDPOINT : BROWSER_API_ENDPOINT,
     credentials: 'include',
     fetch
   });
-
-  // Make sure the wsLink is only created on the browser. The server doesn't have a native implemention for websockets
-  // const wsLink = process.browser
-  //   ? new WebSocketLink({
-  //       uri: WEBSOCKET_API_URL,
-  //       options: {
-  //         reconnect: true
-  //       }
-  //     })
-  //   : () => {
-  //       // eslint-disable-next-line no-console
-  //       return;
-  //     };
-
-  // Let Apollo figure out if the request is over ws or http
-  // const terminatingLink = split(
-  //   ({ query }) => {
-  //     // @ts-ignore
-  //     const { kind, operation } = getMainDefinition(query);
-
-  //     return (
-  //       kind === 'OperationDefinition' && operation === 'subscription'
-  //       //  && process.browser
-  //     );
-  //   },
-  //   // @ts-ignore
-  //   wsLink,
-  //   httpLink
-  // );
 
   return new ApolloClient({
     link: ApolloLink.from([

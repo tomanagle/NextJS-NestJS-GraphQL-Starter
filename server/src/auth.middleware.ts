@@ -18,6 +18,7 @@ export class AuthMiddleware implements NestMiddleware {
 
     const refreshToken = await this.authService.getSession({ token });
     req.user = get(refreshToken, 'user', null);
+
     return next();
   }
 }
