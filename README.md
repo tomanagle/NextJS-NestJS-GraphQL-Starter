@@ -7,21 +7,20 @@ A NextJS frontend and NextJS backend GraphQL starter pack that includes GitHub &
 - [x] Reddit authentication
 - [x] Update basic profile information
 - [x] Server rendering
+- [x] Translation
 
-### Frontend
+## Technologies
 * [NextJS](https://nextjs.org/)
 * [Bumbag](https://bumbag.style/)
 * [styled-components](https://styled-components.com/)
-* [Apollo Client](https://www.apollographql.com/docs/react/)
+* [Apollo Client 3.0](https://www.apollographql.com/docs/react/)
 * [GraphQL Code Generator](https://graphql-code-generator.com/)
 * [Yup](https://github.com/jquense/yup)
 * [TypeScript](https://www.typescriptlang.org/)
-
-### Backend
 * [NestJS](https://nestjs.com/)
 * [Mongoose](https://mongoosejs.com/)
 * [TypeGraphQL](https://typegraphql.com/)
-* [TypeScript](https://www.typescriptlang.org/)
+* [react-i18next](https://react.i18next.com/)
 
 ## Getting started
 
@@ -64,8 +63,6 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 [Buy me a Coffee](https://www.buymeacoffee.com/tomn)
 
 [Sign up to DigitalOcean](https://m.do.co/c/1b74cb8c56f4) I 💖 DigitalOcean
-
-Check out my latest project [Snipd](https://snipd.io/)
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
