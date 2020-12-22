@@ -8,6 +8,8 @@ A NextJS frontend and NextJS backend GraphQL starter pack that includes GitHub &
 - [x] Update basic profile information
 - [x] Server rendering
 - [x] Translation
+- [x] Session management 
+- [x] docker-compose for client & server
 
 ## Technologies
 * [NextJS](https://nextjs.org/)
@@ -21,6 +23,8 @@ A NextJS frontend and NextJS backend GraphQL starter pack that includes GitHub &
 * [Mongoose](https://mongoosejs.com/)
 * [TypeGraphQL](https://typegraphql.com/)
 * [react-i18next](https://react.i18next.com/)
+* [Docker](https://docs.docker.com/)
+* [React Hook Form]([react-hook-form](https://react-hook-form.com/))
 
 ## Getting started
 
