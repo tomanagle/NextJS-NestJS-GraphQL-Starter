@@ -8,7 +8,8 @@ import Error from 'components/Error';
 const Wrapper = styled.div``;
 
 const GitHubAuthContainer = ({ query }) => {
-  const { data, error } = useGitHubAuthQuery({
+  const { error } = useGitHubAuthQuery({
+    ssr: false,
     onCompleted: () => {
       window.close();
     },

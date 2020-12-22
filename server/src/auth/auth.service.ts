@@ -1,9 +1,11 @@
 import qs from 'qs';
+import { Request } from 'express';
 import {
   IS_LOCAL,
   REFRESH_COOKIE_DURATION,
   COOKIE_DOMAIN,
   CORS_ORIGIN,
+  SESSION_TOKEN_NAME,
 } from '@constants';
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
@@ -143,6 +145,11 @@ export class AuthService {
     @InjectModel('User') private readonly userModel: Model<UserModel, User>,
     @InjectModel('Session') private readonly sessionModel: Model<Session>,
   ) {}
+
+  async logout(context) {
+    context.res.clearCookie(SESSION_TOKEN_NAME);
+    return null;
+  }
 
   async generateSession(input) {
     const session = await this.sessionModel.create(input);
@@ -333,7 +340,7 @@ export class AuthService {
       user: { _id: user._id, role: user.role },
     });
 
-    context.res.cookie('token', token, {
+    context.res.cookie(SESSION_TOKEN_NAME, token, {
       maxAge: REFRESH_COOKIE_DURATION,
       domain: COOKIE_DOMAIN,
       httpOnly: true,

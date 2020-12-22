@@ -5,7 +5,7 @@ import { useMeQuery } from 'generated';
 import LoggedOutHome from 'containers/LoggedOutHome';
 
 const Home = () => {
-  const { data } = useMeQuery();
+  const { data, loading } = useMeQuery();
   const me = get(data, 'me', null);
 
   return (

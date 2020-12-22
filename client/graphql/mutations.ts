@@ -11,3 +11,15 @@ export const UPDATE_USER_MUTATION = gql`
     }
   }
 `;
+
+export const LOGOUT_MUTATION = gql`
+  mutation logout {
+    logout {
+      _id
+      permalink
+      name
+      avatar
+      bio
+    }
+  }
+`;

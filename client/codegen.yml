@@ -8,11 +8,8 @@ generates:
       - "typescript"
       - "typescript-operations"
       - "typescript-react-apollo"
-  schema/typeDefs.graphql:
-    plugins:
-      - add: '# THIS IS A GENERATED FILE, use `yarn codegen to regenerate'
-      - schema-ast
 config:
+  reactApolloVersion: 3
   immutableTypes: true
   namingConvention:
     typeNames: change-case#pascalCase
@@ -22,4 +19,7 @@ config:
     Date: Date
     Time: Date
     String: string
+  withHOC: false
   withHooks: true
+  withComponent: false
+  useIndexSignature: true

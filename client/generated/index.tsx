@@ -1,15 +1,11 @@
 // THIS IS A GENERATED FILE, use `yarn codegen to regenerate
 import gql from 'graphql-tag';
-import * as ApolloReactCommon from '@apollo/react-common';
-import * as React from 'react';
-import * as ApolloReactComponents from '@apollo/react-components';
-import * as ApolloReactHoc from '@apollo/react-hoc';
-import * as ApolloReactHooks from '@apollo/react-hooks';
+import * as ApolloReactCommon from '@apollo/client';
+import * as ApolloReactHooks from '@apollo/client';
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -29,6 +25,7 @@ export type GitHubAuthInput = {
 
 export type Mutation = {
   readonly __typename?: 'Mutation';
+  readonly logout?: Maybe<User>;
   readonly updateUser: User;
 };
 
@@ -108,6 +105,17 @@ export type UpdateUserMutation = (
     { readonly __typename?: 'User' }
     & Pick<User, '_id' | 'permalink' | 'name' | 'avatar' | 'bio'>
   ) }
+);
+
+export type LogoutMutationVariables = Exact<{ [key: string]: never; }>;
+
+
+export type LogoutMutation = (
+  { readonly __typename?: 'Mutation' }
+  & { readonly logout?: Maybe<(
+    { readonly __typename?: 'User' }
+    & Pick<User, '_id' | 'permalink' | 'name' | 'avatar' | 'bio'>
+  )> }
 );
 
 export type GitHubAuthQueryVariables = Exact<{
@@ -194,25 +202,6 @@ export const UpdateUserDocument = gql`
 }
     `;
 export type UpdateUserMutationFn = ApolloReactCommon.MutationFunction<UpdateUserMutation, UpdateUserMutationVariables>;
-export type UpdateUserComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<UpdateUserMutation, UpdateUserMutationVariables>, 'mutation'>;
-
-    export const UpdateUserComponent = (props: UpdateUserComponentProps) => (
-      <ApolloReactComponents.Mutation<UpdateUserMutation, UpdateUserMutationVariables> mutation={UpdateUserDocument} {...props} />
-    );
-    
-export type UpdateUserProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
-      [key in TDataName]: ApolloReactCommon.MutationFunction<UpdateUserMutation, UpdateUserMutationVariables>
-    } & TChildProps;
-export function withUpdateUser<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  UpdateUserMutation,
-  UpdateUserMutationVariables,
-  UpdateUserProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withMutation<TProps, UpdateUserMutation, UpdateUserMutationVariables, UpdateUserProps<TChildProps, TDataName>>(UpdateUserDocument, {
-      alias: 'updateUser',
-      ...operationOptions
-    });
-};
 
 /**
  * __useUpdateUserMutation__
@@ -237,6 +226,41 @@ export function useUpdateUserMutation(baseOptions?: ApolloReactHooks.MutationHoo
 export type UpdateUserMutationHookResult = ReturnType<typeof useUpdateUserMutation>;
 export type UpdateUserMutationResult = ApolloReactCommon.MutationResult<UpdateUserMutation>;
 export type UpdateUserMutationOptions = ApolloReactCommon.BaseMutationOptions<UpdateUserMutation, UpdateUserMutationVariables>;
+export const LogoutDocument = gql`
+    mutation logout {
+  logout {
+    _id
+    permalink
+    name
+    avatar
+    bio
+  }
+}
+    `;
+export type LogoutMutationFn = ApolloReactCommon.MutationFunction<LogoutMutation, LogoutMutationVariables>;
+
+/**
+ * __useLogoutMutation__
+ *
+ * To run a mutation, you first call `useLogoutMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useLogoutMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [logoutMutation, { data, loading, error }] = useLogoutMutation({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useLogoutMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<LogoutMutation, LogoutMutationVariables>) {
+        return ApolloReactHooks.useMutation<LogoutMutation, LogoutMutationVariables>(LogoutDocument, baseOptions);
+      }
+export type LogoutMutationHookResult = ReturnType<typeof useLogoutMutation>;
+export type LogoutMutationResult = ApolloReactCommon.MutationResult<LogoutMutation>;
+export type LogoutMutationOptions = ApolloReactCommon.BaseMutationOptions<LogoutMutation, LogoutMutationVariables>;
 export const GitHubAuthDocument = gql`
     query gitHubAuth($input: GitHubAuthInput!) {
   gitHubAuth(input: $input) {
@@ -245,25 +269,6 @@ export const GitHubAuthDocument = gql`
   }
 }
     `;
-export type GitHubAuthComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<GitHubAuthQuery, GitHubAuthQueryVariables>, 'query'> & ({ variables: GitHubAuthQueryVariables; skip?: boolean; } | { skip: boolean; });
-
-    export const GitHubAuthComponent = (props: GitHubAuthComponentProps) => (
-      <ApolloReactComponents.Query<GitHubAuthQuery, GitHubAuthQueryVariables> query={GitHubAuthDocument} {...props} />
-    );
-    
-export type GitHubAuthProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<GitHubAuthQuery, GitHubAuthQueryVariables>
-    } & TChildProps;
-export function withGitHubAuth<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  GitHubAuthQuery,
-  GitHubAuthQueryVariables,
-  GitHubAuthProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, GitHubAuthQuery, GitHubAuthQueryVariables, GitHubAuthProps<TChildProps, TDataName>>(GitHubAuthDocument, {
-      alias: 'gitHubAuth',
-      ...operationOptions
-    });
-};
 
 /**
  * __useGitHubAuthQuery__
@@ -298,25 +303,6 @@ export const RedditAuthDocument = gql`
   }
 }
     `;
-export type RedditAuthComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<RedditAuthQuery, RedditAuthQueryVariables>, 'query'> & ({ variables: RedditAuthQueryVariables; skip?: boolean; } | { skip: boolean; });
-
-    export const RedditAuthComponent = (props: RedditAuthComponentProps) => (
-      <ApolloReactComponents.Query<RedditAuthQuery, RedditAuthQueryVariables> query={RedditAuthDocument} {...props} />
-    );
-    
-export type RedditAuthProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<RedditAuthQuery, RedditAuthQueryVariables>
-    } & TChildProps;
-export function withRedditAuth<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  RedditAuthQuery,
-  RedditAuthQueryVariables,
-  RedditAuthProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, RedditAuthQuery, RedditAuthQueryVariables, RedditAuthProps<TChildProps, TDataName>>(RedditAuthDocument, {
-      alias: 'redditAuth',
-      ...operationOptions
-    });
-};
 
 /**
  * __useRedditAuthQuery__
@@ -350,25 +336,6 @@ export const GoogleAuthDocument = gql`
   }
 }
     `;
-export type GoogleAuthComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<GoogleAuthQuery, GoogleAuthQueryVariables>, 'query'> & ({ variables: GoogleAuthQueryVariables; skip?: boolean; } | { skip: boolean; });
-
-    export const GoogleAuthComponent = (props: GoogleAuthComponentProps) => (
-      <ApolloReactComponents.Query<GoogleAuthQuery, GoogleAuthQueryVariables> query={GoogleAuthDocument} {...props} />
-    );
-    
-export type GoogleAuthProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<GoogleAuthQuery, GoogleAuthQueryVariables>
-    } & TChildProps;
-export function withGoogleAuth<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  GoogleAuthQuery,
-  GoogleAuthQueryVariables,
-  GoogleAuthProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, GoogleAuthQuery, GoogleAuthQueryVariables, GoogleAuthProps<TChildProps, TDataName>>(GoogleAuthDocument, {
-      alias: 'googleAuth',
-      ...operationOptions
-    });
-};
 
 /**
  * __useGoogleAuthQuery__
@@ -407,25 +374,6 @@ export const MeDocument = gql`
   }
 }
     `;
-export type MeComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<MeQuery, MeQueryVariables>, 'query'>;
-
-    export const MeComponent = (props: MeComponentProps) => (
-      <ApolloReactComponents.Query<MeQuery, MeQueryVariables> query={MeDocument} {...props} />
-    );
-    
-export type MeProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<MeQuery, MeQueryVariables>
-    } & TChildProps;
-export function withMe<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  MeQuery,
-  MeQueryVariables,
-  MeProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, MeQuery, MeQueryVariables, MeProps<TChildProps, TDataName>>(MeDocument, {
-      alias: 'me',
-      ...operationOptions
-    });
-};
 
 /**
  * __useMeQuery__
@@ -462,25 +410,6 @@ export const UserDocument = gql`
   }
 }
     `;
-export type UserComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<UserQuery, UserQueryVariables>, 'query'> & ({ variables: UserQueryVariables; skip?: boolean; } | { skip: boolean; });
-
-    export const UserComponent = (props: UserComponentProps) => (
-      <ApolloReactComponents.Query<UserQuery, UserQueryVariables> query={UserDocument} {...props} />
-    );
-    
-export type UserProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<UserQuery, UserQueryVariables>
-    } & TChildProps;
-export function withUser<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  UserQuery,
-  UserQueryVariables,
-  UserProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, UserQuery, UserQueryVariables, UserProps<TChildProps, TDataName>>(UserDocument, {
-      alias: 'user',
-      ...operationOptions
-    });
-};
 
 /**
  * __useUserQuery__
@@ -512,25 +441,6 @@ export const GetGoogleAuthUrlDocument = gql`
   getGoogleAuthURL
 }
     `;
-export type GetGoogleAuthUrlComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<GetGoogleAuthUrlQuery, GetGoogleAuthUrlQueryVariables>, 'query'>;
-
-    export const GetGoogleAuthUrlComponent = (props: GetGoogleAuthUrlComponentProps) => (
-      <ApolloReactComponents.Query<GetGoogleAuthUrlQuery, GetGoogleAuthUrlQueryVariables> query={GetGoogleAuthUrlDocument} {...props} />
-    );
-    
-export type GetGoogleAuthUrlProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<GetGoogleAuthUrlQuery, GetGoogleAuthUrlQueryVariables>
-    } & TChildProps;
-export function withGetGoogleAuthUrl<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  GetGoogleAuthUrlQuery,
-  GetGoogleAuthUrlQueryVariables,
-  GetGoogleAuthUrlProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, GetGoogleAuthUrlQuery, GetGoogleAuthUrlQueryVariables, GetGoogleAuthUrlProps<TChildProps, TDataName>>(GetGoogleAuthUrlDocument, {
-      alias: 'getGoogleAuthUrl',
-      ...operationOptions
-    });
-};
 
 /**
  * __useGetGoogleAuthUrlQuery__

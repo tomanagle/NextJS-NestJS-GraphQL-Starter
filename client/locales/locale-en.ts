@@ -35,6 +35,13 @@ export default {
     siteShortName: 'A short name',
     twitterHandle: '@example'
   },
+  navigation: {
+    dropdown: 'Menu',
+    profile: 'Profile',
+    logout: 'Logout',
+    login: 'Login',
+    register: 'Register'
+  },
   page: {
     notFound: {
       body: 'The page you are looking for does not exist.',

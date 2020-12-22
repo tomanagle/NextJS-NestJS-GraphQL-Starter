@@ -1,4 +1,4 @@
-import { Resolver, Query, Args, Context } from '@nestjs/graphql';
+import { Resolver, Query, Args, Context, Mutation } from '@nestjs/graphql';
 import { AuthService } from './auth.service';
 import { User } from '../user/user.schema';
 import { GitHubAuthInput, RedditAuthInput } from '@input';
@@ -25,5 +25,10 @@ export class AuthResolver {
   @Query(_returns => String)
   async getGoogleAuthURL() {
     return this.authService.getGoogleAuthURL();
+  }
+
+  @Mutation(_returns => User, { nullable: true })
+  async logout(@Context() context) {
+    return this.authService.logout(context);
   }
 }

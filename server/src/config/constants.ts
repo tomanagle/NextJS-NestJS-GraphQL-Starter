@@ -11,6 +11,8 @@ export const TOKEN_COOKIE_DURATION = process.env.TOKEN_COOKIE_DURATION || 3.6e6;
 export const REFRESH_COOKIE_DURATION =
   process.env.REFRESH_COOKIE_DURATION || 3.154e10; // 1 year
 
+export const SESSION_TOKEN_NAME = process.env.SESSION_TOKEN_NAME || 'token';
+
 export const DB_NAME = process.env.DB_NAME || 'NextNextStarter';
 
 export const MONO_DB_CONNECTION_STRING =

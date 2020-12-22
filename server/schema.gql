@@ -43,6 +43,7 @@ input GetUserInput {
 }
 
 type Mutation {
+  logout: User
   updateUser(input: UpdateUserInput!): User!
 }
 

@@ -3,16 +3,14 @@ import withGA from 'next-ga';
 import NProgress from 'nprogress';
 import { get } from 'lodash';
 import { Provider as BumbagProvider, ToastManager } from 'bumbag';
-import { ApolloProvider } from '@apollo/react-hooks';
 import Router from 'next/router';
-import withApolloClient from '../lib/with-apollo-client';
+import { getDataFromTree } from '@apollo/client/react/ssr';
 import { GA_ID } from '../constants';
 import initSentry from '../lib/sentry';
 import jwt from 'jsonwebtoken';
 import parseCookie from 'helpers/parseCookie';
 import theme from '../constants/theme';
-
-export const Context = React.createContext({ ua: '' });
+import withApollo from '../lib/withApollo';
 
 NProgress.configure({ showSpinner: false });
 Router.events.on('routeChangeStart', () => {
@@ -21,18 +19,12 @@ Router.events.on('routeChangeStart', () => {
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
-function MyApp({ Component, pageProps, apolloClient }) {
-  // const apolloClient = useApollo(pageProps.initialApolloState);
-
+function MyApp({ Component, pageProps }) {
   return (
-    <Context.Provider value={{ ua: pageProps.ua }}>
-      <ApolloProvider client={apolloClient}>
-        <BumbagProvider isSSR theme={theme}>
-          <Component {...pageProps} />
-          <ToastManager />
-        </BumbagProvider>
-      </ApolloProvider>
-    </Context.Provider>
+    <BumbagProvider isSSR theme={theme}>
+      <Component {...pageProps} />
+      <ToastManager />
+    </BumbagProvider>
   );
 }
 
@@ -59,4 +51,4 @@ MyApp.getInitialProps = async ({ Component, ctx }) => {
   return { pageProps };
 };
 
-export default withGA(GA_ID, Router)(withApolloClient(MyApp));
+export default withGA(GA_ID, Router)(withApollo(MyApp, { getDataFromTree }));
