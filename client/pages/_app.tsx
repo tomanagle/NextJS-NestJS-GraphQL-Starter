@@ -51,4 +51,4 @@ MyApp.getInitialProps = async ({ Component, ctx }) => {
   return { pageProps };
 };
 
-export default withGA(GA_ID, Router)(withApollo(MyApp, { getDataFromTree }));
+export default withGA(GA_ID, Router)(MyApp);

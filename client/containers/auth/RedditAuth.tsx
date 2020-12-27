@@ -1,13 +1,12 @@
 import React from 'react';
-import gql from 'graphql-tag';
-import { styled } from 'bumbag';
+import useTranslation from 'locales/useTranslation';
+import { Box } from 'bumbag';
 import FullPageLoading from 'components/FullPageLoading';
 import { useRedditAuthQuery } from 'generated';
 import Error from 'components/Error';
 
-const Wrapper = styled.div``;
-
 const RedditAuthContainer = ({ query }) => {
+  const { t } = useTranslation();
   const { data, error } = useRedditAuthQuery({
     onCompleted: () => {
       window.close();
@@ -15,18 +14,26 @@ const RedditAuthContainer = ({ query }) => {
     variables: { input: { code: query.code } }
   });
 
+  if (!query.code) {
+    return (
+      <Box>
+        <Error error={t('page.github.errors.missingCode')} />
+      </Box>
+    );
+  }
+
   if (error) {
     return (
-      <Wrapper>
+      <Box>
         <Error error={error} />
-      </Wrapper>
+      </Box>
     );
   }
 
   return (
-    <Wrapper>
+    <Box>
       <FullPageLoading />
-    </Wrapper>
+    </Box>
   );
 };
 

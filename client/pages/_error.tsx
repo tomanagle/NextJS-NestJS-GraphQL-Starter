@@ -1,5 +1,6 @@
 import NextErrorComponent from 'next/error';
 import * as Sentry from '@sentry/node';
+import withApollo from 'lib/withApollo';
 
 const Error = ({ statusCode, hasGetInitialPropsRun, err }) => {
   if (!hasGetInitialPropsRun && err) {
@@ -56,4 +57,4 @@ Error.getInitialProps = async ({ res, err, asPath }) => {
   return errorInitialProps;
 };
 
-export default Error;
+export default withApollo(Error);

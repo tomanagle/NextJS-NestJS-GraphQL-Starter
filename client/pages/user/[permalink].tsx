@@ -1,13 +1,16 @@
 import * as React from 'react';
 import { get } from 'lodash';
 import Error from 'next/error';
+import { getDataFromTree } from '@apollo/client/react/ssr';
 import { Box, Heading, Text } from 'bumbag';
 import App from 'components/App';
 import { useUserQuery } from 'generated';
+import withApollo from 'lib/withApollo';
+import { NextPageContext } from 'next';
 
-function UserProfilePage({ query: { permalink } }) {
+function UserProfilePage(props: NextPageContext) {
   const { data, loading, error } = useUserQuery({
-    variables: { input: { userPermalink: permalink } }
+    variables: { input: { userPermalink: get(props, 'query.permalink', '') } }
   });
 
   const user = get(data, 'user', null);
@@ -17,7 +20,7 @@ function UserProfilePage({ query: { permalink } }) {
   }
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <div>loading,..,s</div>;
   }
 
   return (
@@ -38,4 +41,4 @@ function UserProfilePage({ query: { permalink } }) {
   );
 }
 
-export default UserProfilePage;
+export default withApollo(UserProfilePage, { getDataFromTree });

@@ -1,13 +1,12 @@
 import React from 'react';
-import gql from 'graphql-tag';
-import { styled } from 'bumbag';
+import { Box } from 'bumbag';
+import useTranslation from 'locales/useTranslation';
 import FullPageLoading from 'components/FullPageLoading';
 import { useGitHubAuthQuery } from 'generated';
 import Error from 'components/Error';
 
-const Wrapper = styled.div``;
-
 const GitHubAuthContainer = ({ query }) => {
+  const { t } = useTranslation();
   const { error } = useGitHubAuthQuery({
     ssr: false,
     onCompleted: () => {
@@ -16,18 +15,26 @@ const GitHubAuthContainer = ({ query }) => {
     variables: { input: { code: query.code } }
   });
 
+  if (!query.code) {
+    return (
+      <Box>
+        <Error error={t('page.github.errors.missingCode')} />
+      </Box>
+    );
+  }
+
   if (error) {
     return (
-      <Wrapper>
+      <Box>
         <Error error={error} />
-      </Wrapper>
+      </Box>
     );
   }
 
   return (
-    <Wrapper>
+    <Box>
       <FullPageLoading />
-    </Wrapper>
+    </Box>
   );
 };
 

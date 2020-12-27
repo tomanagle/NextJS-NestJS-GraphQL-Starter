@@ -1,22 +1,22 @@
 import * as React from 'react';
-import { get, isEqual, omit } from 'lodash';
+import { get } from 'lodash';
 import {
   Button,
   InputField,
   TextareaField,
   FieldStack,
   useToasts,
-  Flex
+  Flex,
+  Columns,
+  Container
 } from 'bumbag';
 import useTranslation from 'locales/useTranslation';
 import * as Yup from 'yup';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import emailValidator from 'email-validator';
 import { useMeQuery, useUpdateUserMutation } from 'generated';
-import { Field } from 'formik';
 import App from 'components/App';
-import Error from 'components/Error';
+import withApollo from 'lib/withApollo';
 
 function SettingsPage() {
   const { t } = useTranslation();
@@ -50,7 +50,7 @@ function SettingsPage() {
     bio: Yup.string()
   });
 
-  const { handleSubmit, watch, errors, control } = useForm({
+  const { handleSubmit, errors, control } = useForm({
     defaultValues,
     resolver: yupResolver(validationSchema)
   });
@@ -70,10 +70,6 @@ function SettingsPage() {
     return <p>Loading ...</p>;
   }
 
-  if (!loading && !me) {
-    return <p>not found</p>;
-  }
-
   return (
     <App
       title={t('page.profile.title')}
@@ -81,57 +77,59 @@ function SettingsPage() {
       breadcrumbs={[{ label: t('page.profile.title') }]}
       requiresUser
     >
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <FieldStack>
-          <Controller
-            control={control}
-            as={InputField}
-            isRequired
-            name="name"
-            autoComplete="name"
-            label={t('page.profile.form.name.label')}
-            placeholder={t('page.profile.form.name.placeholder')}
-            defaultValue={defaultValues.name || ''}
-            state={get(errors, 'name.message') ? 'danger' : undefined}
-          />
+      <Container breakpoint="tablet">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <FieldStack>
+            <Controller
+              control={control}
+              as={InputField}
+              isRequired
+              name="name"
+              autoComplete="name"
+              label={t('page.profile.form.name.label')}
+              placeholder={t('page.profile.form.name.placeholder')}
+              defaultValue={defaultValues.name || ''}
+              state={get(errors, 'name.message') ? 'danger' : undefined}
+            />
 
-          <Controller
-            control={control}
-            as={InputField}
-            isRequired
-            name="email"
-            type="email"
-            autoComplete="email"
-            label={t('page.profile.form.email.label')}
-            placeholder={t('page.profile.form.email.placeholder')}
-            defaultValue={defaultValues.email || ''}
-            state={get(errors, 'email.message') ? 'danger' : undefined}
-          />
+            <Controller
+              control={control}
+              as={InputField}
+              isRequired
+              name="email"
+              type="email"
+              autoComplete="email"
+              label={t('page.profile.form.email.label')}
+              placeholder={t('page.profile.form.email.placeholder')}
+              defaultValue={defaultValues.email || ''}
+              state={get(errors, 'email.message') ? 'danger' : undefined}
+            />
 
-          <Controller
-            control={control}
-            as={TextareaField}
-            name="bio"
-            label={t('page.profile.form.bio.label')}
-            placeholder={t('page.profile.form.bio.placeholder')}
-            defaultValue={defaultValues.bio || ''}
-            state={get(errors, 'bio.message') ? 'danger' : undefined}
-          />
-        </FieldStack>
+            <Controller
+              control={control}
+              as={TextareaField}
+              name="bio"
+              label={t('page.profile.form.bio.label')}
+              placeholder={t('page.profile.form.bio.placeholder')}
+              defaultValue={defaultValues.bio || ''}
+              state={get(errors, 'bio.message') ? 'danger' : undefined}
+            />
+          </FieldStack>
 
-        <Flex justifyContent="flex-end">
-          <Button
-            marginTop="major-2"
-            isLoading={updating}
-            disabled={updating}
-            type="submit"
-          >
-            {t('page.profile.form.callToAction')}
-          </Button>
-        </Flex>
-      </form>
+          <Flex justifyContent="flex-end">
+            <Button
+              marginTop="major-2"
+              isLoading={updating}
+              disabled={updating}
+              type="submit"
+            >
+              {t('page.profile.form.callToAction')}
+            </Button>
+          </Flex>
+        </form>
+      </Container>
     </App>
   );
 }
 
-export default SettingsPage;
+export default withApollo(SettingsPage);

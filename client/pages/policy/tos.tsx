@@ -1,8 +1,8 @@
-import { Link } from 'bumbag';
+import { Link, Container } from 'bumbag';
 import App from 'components/App';
-import PageContainer from 'containers/Page';
 import { CLIENT_DOMAIN } from 'config/env';
 import useTranslation from 'locales/useTranslation';
+import withApollo from 'lib/withApollo';
 
 const TOSPage = () => {
   const { t } = useTranslation();
@@ -11,7 +11,7 @@ const TOSPage = () => {
       title="Terms of Service"
       description={`${t('global.siteTitle')} Terms of Service`}
     >
-      <PageContainer>
+      <Container breakpoint="tablet">
         <h1>{t('global.siteTitle')} Terms of Service</h1>
         <h3>1. Terms</h3>
         <p>
@@ -125,9 +125,9 @@ const TOSPage = () => {
           with the laws of Victoria, Australia and you irrevocably submit to the
           exclusive jurisdiction of the courts in that State or location.
         </p>
-      </PageContainer>
+      </Container>
     </App>
   );
 };
 
-export default TOSPage;
+export default withApollo(TOSPage);

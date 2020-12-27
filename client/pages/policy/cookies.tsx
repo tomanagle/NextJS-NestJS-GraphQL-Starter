@@ -1,8 +1,8 @@
-import { Link } from 'bumbag';
+import { Link, Columns, Container } from 'bumbag';
 import App from 'components/App';
-import PageContainer from 'containers/Page';
-import { CLIENT_DOMAIN, SITE_NAME } from 'config/env';
+import { CLIENT_DOMAIN } from 'config/env';
 import useTranslation from 'locales/useTranslation';
+import withApollo from 'lib/withApollo';
 
 const CookiePolicyPage = () => {
   const { t } = useTranslation();
@@ -15,7 +15,7 @@ const CookiePolicyPage = () => {
     respect your privacy regarding any information we may collect from you
     across our website`}
     >
-      <PageContainer>
+      <Container breakpoint="tablet">
         <h1>Cookie Policy</h1>
 
         <p>
@@ -160,9 +160,9 @@ const CookiePolicyPage = () => {
           or not it's usually safer to leave cookies enabled in case it does
           interact with one of the features you use on our site.
         </p>
-      </PageContainer>
+      </Container>
     </App>
   );
 };
 
-export default CookiePolicyPage;
+export default withApollo(CookiePolicyPage);

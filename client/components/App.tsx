@@ -4,7 +4,7 @@ import { NextSeo, BreadcrumbJsonLd } from 'next-seo';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Link from 'next/link';
-import { PageWithHeader, Breadcrumb, Box, useTheme } from 'bumbag';
+import { PageWithHeader, Breadcrumb, Box, useTheme, usePage } from 'bumbag';
 import { useMeQuery } from 'generated';
 import { CLIENT_DOMAIN } from 'config/env';
 import manifest from 'public/manifest.json';
@@ -111,6 +111,14 @@ const App = ({
     };
   });
 
+  const { header } = usePage();
+
+  if (!showNav) {
+    header.close();
+  } else {
+    header.open();
+  }
+
   return (
     <>
       <NextSeo
@@ -146,18 +154,11 @@ const App = ({
       </Head>
 
       <PageWithHeader header={<Navigation />} border="default">
-        {requiresUser && !me ? (
-          <Login />
-        ) : (
-          <>
-            <RenderBreadcrumbs breadcrumbs={breadcrumbs} asPath={asPath} />
-            <Box use="main" flex="1" padding={pagePadding}>
-              {children}
-            </Box>
-
-            {showFooter && <Footer pagePadding={pagePadding} />}
-          </>
-        )}
+        <RenderBreadcrumbs breadcrumbs={breadcrumbs} asPath={asPath} />
+        <Box use="main" flex="1" padding={pagePadding}>
+          {requiresUser && !me ? <Login /> : children}
+        </Box>
+        {showFooter && <Footer pagePadding={pagePadding} />}
       </PageWithHeader>
     </>
   );

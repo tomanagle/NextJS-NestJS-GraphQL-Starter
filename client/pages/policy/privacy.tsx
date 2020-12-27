@@ -1,9 +1,9 @@
-import { Link as BBLink } from 'bumbag';
+import { Link as BBLink, Container } from 'bumbag';
 import App from 'components/App';
-import PageContainer from 'containers/Page';
 import Link from 'next/link';
 import { CLIENT_DOMAIN } from 'config/env';
 import useTranslation from 'locales/useTranslation';
+import withApollo from 'lib/withApollo';
 
 const CookiePolicyPage = () => {
   const { t } = useTranslation();
@@ -16,7 +16,7 @@ const CookiePolicyPage = () => {
     respect your privacy regarding any information we may collect from you
     across our website`}
     >
-      <PageContainer>
+      <Container breakpoint="tablet">
         <h1>Privacy Policy</h1>
         <p>
           Your privacy is important to us. It is {t('global.siteTitle')}'s
@@ -62,9 +62,9 @@ const CookiePolicyPage = () => {
           free to contact us.
         </p>
         <p>This policy is effective as of 3 January 2020.</p>
-      </PageContainer>
+      </Container>
     </App>
   );
 };
 
-export default CookiePolicyPage;
+export default withApollo(CookiePolicyPage);

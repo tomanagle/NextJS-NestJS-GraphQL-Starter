@@ -1,31 +1,39 @@
 import React from 'react';
-import { styled } from 'bumbag';
+import { Box } from 'bumbag';
+import useTranslation from 'locales/useTranslation';
 import FullPageLoading from 'components/FullPageLoading';
 import { useGoogleAuthQuery } from 'generated';
 import Error from 'components/Error';
 
-const Wrapper = styled.div``;
-
 const GoogleAuthContainer = ({ query }) => {
-  const { data, error } = useGoogleAuthQuery({
+  const { t } = useTranslation();
+  const { error } = useGoogleAuthQuery({
     onCompleted: () => {
       window.close();
     },
     variables: { input: { code: query.code } }
   });
 
+  if (!query.code) {
+    return (
+      <Box>
+        <Error error={t('page.google.errors.missingCode')} />
+      </Box>
+    );
+  }
+
   if (error) {
     return (
-      <Wrapper>
+      <Box>
         <Error error={error} />
-      </Wrapper>
+      </Box>
     );
   }
 
   return (
-    <Wrapper>
+    <Box>
       <FullPageLoading />
-    </Wrapper>
+    </Box>
   );
 };
 

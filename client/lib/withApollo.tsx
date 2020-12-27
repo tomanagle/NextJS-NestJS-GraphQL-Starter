@@ -1,15 +1,9 @@
 import {
-  split,
-  ApolloLink,
   ApolloClient,
-  concat,
   InMemoryCache,
   HttpLink,
   ApolloProvider
 } from '@apollo/client';
-import fetch from 'isomorphic-unfetch';
-import { WebSocketLink } from 'apollo-link-ws';
-import { getMainDefinition } from 'apollo-utilities';
 import nextWithApollo from 'next-with-apollo';
 
 import {
@@ -19,8 +13,9 @@ import {
 } from 'config/env';
 
 const withApollo = nextWithApollo(
-  ({ initialState, headers }) => {
+  ({ initialState, headers, ...rest }) => {
     return new ApolloClient({
+      ssrMode: IS_SERVER,
       link: new HttpLink({
         uri: IS_SERVER ? SERVER_API_ENDPOINT : BROWSER_API_ENDPOINT,
         headers: {
@@ -28,14 +23,17 @@ const withApollo = nextWithApollo(
         },
         credentials: 'include'
       }),
-      cache: new InMemoryCache().restore(initialState || {})
+      cache: new InMemoryCache().restore(initialState || {}),
+      // A hack to get ctx oin the page's props on the initial render
+      // @ts-ignore
+      defaultOptions: rest
     });
   },
   {
     render: ({ Page, props }) => {
       return (
         <ApolloProvider client={props.apollo}>
-          <Page {...props} />
+          <Page {...props} {...props.apollo.defaultOptions.ctx} />
         </ApolloProvider>
       );
     }

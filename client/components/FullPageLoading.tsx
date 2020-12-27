@@ -10,8 +10,10 @@ const FullPageLoading = () => {
       height="100%"
       position="absolute"
       display="flex"
+      justifyContent="center"
       alignItems="center"
       alignContent="center"
+      left="0"
     >
       <Spinner size="large" />
     </Box>

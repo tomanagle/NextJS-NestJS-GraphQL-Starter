@@ -3,8 +3,9 @@ import { Image, Flex, Text, Button, Heading } from 'bumbag';
 import App from 'components/App';
 import Link from 'next/link';
 import useTranslation from 'locales/useTranslation';
+import withApollo from 'lib/withApollo';
 
-export default function Custom404() {
+function Custom404() {
   const { t } = useTranslation();
 
   return (
@@ -22,3 +23,4 @@ export default function Custom404() {
     </App>
   );
 }
+export default withApollo(Custom404);
