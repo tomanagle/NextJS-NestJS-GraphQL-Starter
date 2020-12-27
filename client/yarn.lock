@@ -6856,7 +6856,7 @@ next-with-apollo@^5.1.0:
   dependencies:
     isomorphic-unfetch "^3.0.0"
 
-next@^10.0.4:
+next@10.0.4:
   version "10.0.4"
   resolved "https://registry.yarnpkg.com/next/-/next-10.0.4.tgz#0d256f58a57d6bab7db7e533900c15f322960b4a"
   integrity sha512-WXEYr1FuR2cLuWGN8peYGM6ykmbtwaHvrI6RqR2qrTXUNsW+KU5pzIMK5WPcpqP+xOuMhlykOCJvwJH8qU9FZQ==
