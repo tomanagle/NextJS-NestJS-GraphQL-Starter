@@ -15,27 +15,6 @@ export const UserSchema = new mongoose.Schema(
     name: String,
     password: { type: String },
     active: { type: Boolean, default: false },
-    location: String,
-    favorites: [
-      { type: mongoose.Schema.Types.ObjectId, ref: 'Post', required: true },
-    ],
-    languages: [
-      { type: mongoose.Schema.Types.ObjectId, ref: 'Language', required: true },
-    ],
-    algorithms: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Algorithm',
-        required: true,
-      },
-    ],
-    dataStructures: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'dataStructure',
-        required: true,
-      },
-    ],
     bio: String,
     role: { type: String, enum: Object.values(Roles), default: Roles.USER },
     tokens: {

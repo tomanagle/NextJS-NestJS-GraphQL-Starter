@@ -2,7 +2,7 @@
 import gql from 'graphql-tag';
 
 export const GITHUB_LOGIN_QUERY = gql`
-  query gitHubAuth($input: GitHubAuthInput!) {
+  query gitHubAuth($input: SocialAuthInput!) {
     gitHubAuth(input: $input) {
       _id
       githubId
@@ -11,7 +11,7 @@ export const GITHUB_LOGIN_QUERY = gql`
 `;
 
 export const REDDIT_LOGIN_QUERY = gql`
-  query redditAuth($input: RedditAuthInput!) {
+  query redditAuth($input: SocialAuthInput!) {
     redditAuth(input: $input) {
       _id
       redditId
@@ -20,7 +20,7 @@ export const REDDIT_LOGIN_QUERY = gql`
 `;
 
 export const GOOGLE_LOGIN_QUERY = gql`
-  query googleAuth($input: RedditAuthInput!) {
+  query googleAuth($input: SocialAuthInput!) {
     googleAuth(input: $input) {
       _id
     }

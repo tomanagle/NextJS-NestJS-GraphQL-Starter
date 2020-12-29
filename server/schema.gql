@@ -21,20 +21,16 @@ enum Roles {
 }
 
 type Query {
-  gitHubAuth(input: GitHubAuthInput!): User!
-  redditAuth(input: RedditAuthInput!): User!
-  googleAuth(input: RedditAuthInput!): User!
+  gitHubAuth(input: SocialAuthInput!): User!
+  redditAuth(input: SocialAuthInput!): User!
+  googleAuth(input: SocialAuthInput!): User!
   getGoogleAuthURL: String!
   users: [User!]!
   me: User
   user(input: GetUserInput!): User
 }
 
-input GitHubAuthInput {
-  code: String
-}
-
-input RedditAuthInput {
+input SocialAuthInput {
   code: String
 }
 

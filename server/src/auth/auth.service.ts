@@ -1,5 +1,4 @@
 import qs from 'qs';
-import { Request } from 'express';
 import {
   IS_LOCAL,
   REFRESH_COOKIE_DURATION,
@@ -28,7 +27,7 @@ import faker from 'faker';
 import querystring from 'querystring';
 import { User, UserModel } from '../user/user.schema';
 import { Session } from '@auth/auth.schema';
-import { RedditUser, GitHubUser } from '@user/user.dto';
+import { RedditUser, GitHubUser } from '@user/user.types';
 
 const oauth2Client = new google.auth.OAuth2(
   GOOGLE_CLIENT_ID,

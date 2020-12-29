@@ -20,7 +20,6 @@
       "@comment/*": ["src/comment/*"],
       "@vote/*": ["src/vote/*"],
       "@feedback/*": ["src/feedback/*"],
-      "@input": ["src/types/input"],
       "@types": ["src/types/types"],
       "@enums": ["src/types/enums"],
       "@secrets": ["src/config/secrets"],
