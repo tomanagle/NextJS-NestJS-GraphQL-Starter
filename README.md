@@ -26,7 +26,7 @@ If there is a feature missing that is used in most production-grade applications
 * [TypeGraphQL](https://typegraphql.com/)
 * [react-i18next](https://react.i18next.com/)
 * [Docker](https://docs.docker.com/)
-* [React Hook Form]([react-hook-form](https://react-hook-form.com/))
+* [React Hook Form](https://react-hook-form.com/)
 
 ## Getting started
 
