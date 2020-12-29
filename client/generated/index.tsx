@@ -19,10 +19,6 @@ export type GetUserInput = {
   readonly userPermalink: Scalars['String'];
 };
 
-export type GitHubAuthInput = {
-  readonly code?: Maybe<Scalars['String']>;
-};
-
 export type Mutation = {
   readonly __typename?: 'Mutation';
   readonly logout?: Maybe<User>;
@@ -47,17 +43,17 @@ export type Query = {
 
 
 export type QueryGitHubAuthArgs = {
-  input: GitHubAuthInput;
+  input: SocialAuthInput;
 };
 
 
 export type QueryRedditAuthArgs = {
-  input: RedditAuthInput;
+  input: SocialAuthInput;
 };
 
 
 export type QueryGoogleAuthArgs = {
-  input: RedditAuthInput;
+  input: SocialAuthInput;
 };
 
 
@@ -65,14 +61,14 @@ export type QueryUserArgs = {
   input: GetUserInput;
 };
 
-export type RedditAuthInput = {
-  readonly code?: Maybe<Scalars['String']>;
-};
-
 export enum Roles {
   USER = 'USER',
   ADMIN = 'ADMIN'
 }
+
+export type SocialAuthInput = {
+  readonly code?: Maybe<Scalars['String']>;
+};
 
 export type UpdateUserInput = {
   readonly email?: Maybe<Scalars['String']>;
@@ -119,7 +115,7 @@ export type LogoutMutation = (
 );
 
 export type GitHubAuthQueryVariables = Exact<{
-  input: GitHubAuthInput;
+  input: SocialAuthInput;
 }>;
 
 
@@ -132,7 +128,7 @@ export type GitHubAuthQuery = (
 );
 
 export type RedditAuthQueryVariables = Exact<{
-  input: RedditAuthInput;
+  input: SocialAuthInput;
 }>;
 
 
@@ -145,7 +141,7 @@ export type RedditAuthQuery = (
 );
 
 export type GoogleAuthQueryVariables = Exact<{
-  input: RedditAuthInput;
+  input: SocialAuthInput;
 }>;
 
 
@@ -262,7 +258,7 @@ export type LogoutMutationHookResult = ReturnType<typeof useLogoutMutation>;
 export type LogoutMutationResult = ApolloReactCommon.MutationResult<LogoutMutation>;
 export type LogoutMutationOptions = ApolloReactCommon.BaseMutationOptions<LogoutMutation, LogoutMutationVariables>;
 export const GitHubAuthDocument = gql`
-    query gitHubAuth($input: GitHubAuthInput!) {
+    query gitHubAuth($input: SocialAuthInput!) {
   gitHubAuth(input: $input) {
     _id
     githubId
@@ -296,7 +292,7 @@ export type GitHubAuthQueryHookResult = ReturnType<typeof useGitHubAuthQuery>;
 export type GitHubAuthLazyQueryHookResult = ReturnType<typeof useGitHubAuthLazyQuery>;
 export type GitHubAuthQueryResult = ApolloReactCommon.QueryResult<GitHubAuthQuery, GitHubAuthQueryVariables>;
 export const RedditAuthDocument = gql`
-    query redditAuth($input: RedditAuthInput!) {
+    query redditAuth($input: SocialAuthInput!) {
   redditAuth(input: $input) {
     _id
     redditId
@@ -330,7 +326,7 @@ export type RedditAuthQueryHookResult = ReturnType<typeof useRedditAuthQuery>;
 export type RedditAuthLazyQueryHookResult = ReturnType<typeof useRedditAuthLazyQuery>;
 export type RedditAuthQueryResult = ApolloReactCommon.QueryResult<RedditAuthQuery, RedditAuthQueryVariables>;
 export const GoogleAuthDocument = gql`
-    query googleAuth($input: RedditAuthInput!) {
+    query googleAuth($input: SocialAuthInput!) {
   googleAuth(input: $input) {
     _id
   }

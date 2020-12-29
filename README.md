@@ -1,6 +1,8 @@
 # NextJS & NestJS GraphQL Starter
 A NextJS frontend and NextJS backend GraphQL starter pack that includes GitHub & Reddit authentication.
 
+## Is something missing?
+If there is a feature missing that is used in most production-grade applications, please make an issue so we can discuss adding it in.
 ## Features
 - [x] Google authentication
 - [x] GitHub authentication
