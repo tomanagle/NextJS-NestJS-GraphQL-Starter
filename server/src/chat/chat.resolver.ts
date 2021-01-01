@@ -1,3 +1,6 @@
+/*
+ * Docs: https://typegraphql.com/docs/subscriptions.html
+ */
 import { Resolver, Subscription, Args, Mutation } from '@nestjs/graphql';
 import { Message } from './chat.schema';
 import { SendMessageInput } from './chat.input';

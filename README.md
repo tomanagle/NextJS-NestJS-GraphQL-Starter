@@ -7,6 +7,7 @@ If there is a feature missing that is used in most production-grade applications
 - [x] Google authentication
 - [x] GitHub authentication
 - [x] Reddit authentication
+- [x] Subscriptions
 - [x] Update basic profile information
 - [x] Server rendering
 - [x] Translation
