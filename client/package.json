@@ -44,7 +44,7 @@
     "react": "^17.0.1",
     "react-dom": "^16.13.1",
     "react-hook-form": "^6.13.0",
-    "react-i18next": "^11.3.4",
+    "react-i18next": "^11.8.5",
     "styled-components": "^5.2.1",
     "subscriptions-transport-ws": "^0.9.18",
     "yup": "^0.32.8"
