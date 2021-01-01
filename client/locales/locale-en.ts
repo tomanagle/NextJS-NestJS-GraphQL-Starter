@@ -48,6 +48,10 @@ export default {
       callToAction: 'Return home',
       title: 'Not found'
     },
+    chat: {
+      title: 'Chat',
+      description: ''
+    },
     profile: {
       title: 'Profile',
       description: '',

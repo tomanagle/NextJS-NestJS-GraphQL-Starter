@@ -23,3 +23,12 @@ export const LOGOUT_MUTATION = gql`
     }
   }
 `;
+
+export const SEND_MESSAGE_MUTATION = gql`
+  mutation sendMessage($input: SendMessageInput!) {
+    sendMessage(input: $input) {
+      sent
+      body
+    }
+  }
+`;

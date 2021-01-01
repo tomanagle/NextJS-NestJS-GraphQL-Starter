@@ -1,12 +1,6 @@
 import { Module, MiddlewareConsumer } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
-import { AuthModule } from '@auth/auth.module';
-import { AuthService } from '@auth/auth.service';
-import { SessionSchema } from '@auth/auth.schema';
-import { UserModule } from '@user/user.module';
-import { UserService } from '@user/user.service';
-import { UserSchema } from '@user/user.schema';
 import { AuthMiddleware } from './auth.middleware';
 import {
   CORS_ORIGIN,
@@ -16,18 +10,20 @@ import {
 } from '@constants';
 import { HealthzController } from './healthz/healthz.controller';
 import SentryPlugin from './sentry.plugin';
-
+import { services, schemas, resolvers } from './config/providers';
+import { ChatModule } from '@chat/chat.module';
+import { UserModule } from '@user/user.module';
+import { AuthModule } from '@auth/auth.module';
 @Module({
   imports: [
     MongooseModule.forRoot(MONO_DB_CONNECTION_STRING, {
       useCreateIndex: true,
       useNewUrlParser: true,
     }),
-    MongooseModule.forFeature([
-      { name: 'User', schema: UserSchema },
-      { name: 'Session', schema: SessionSchema },
-    ]),
+    MongooseModule.forFeature([...schemas]),
     GraphQLModule.forRoot({
+      installSubscriptionHandlers: true,
+
       cors: {
         origin: CORS_ORIGIN,
         optionsSuccessStatus: 200,
@@ -47,11 +43,12 @@ import SentryPlugin from './sentry.plugin';
         return { req, res };
       },
     }),
-    UserModule,
     AuthModule,
+    ChatModule,
+    UserModule,
   ],
   controllers: [HealthzController],
-  providers: [UserService, AuthService],
+  providers: [...services, ...resolvers],
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {

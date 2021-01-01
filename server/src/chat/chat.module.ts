@@ -6,4 +6,4 @@ import { services, resolvers, schemas } from '../config/providers';
   imports: [MongooseModule.forFeature([...schemas])],
   providers: [...services, ...resolvers],
 })
-export class UserModule {}
+export class ChatModule {}

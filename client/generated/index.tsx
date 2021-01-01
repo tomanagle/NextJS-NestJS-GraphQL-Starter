@@ -19,10 +19,22 @@ export type GetUserInput = {
   readonly userPermalink: Scalars['String'];
 };
 
+export type Message = {
+  readonly __typename?: 'Message';
+  readonly body: Scalars['String'];
+  readonly sent: Scalars['String'];
+};
+
 export type Mutation = {
   readonly __typename?: 'Mutation';
+  readonly sendMessage: Message;
   readonly logout?: Maybe<User>;
   readonly updateUser: User;
+};
+
+
+export type MutationSendMessageArgs = {
+  input: SendMessageInput;
 };
 
 
@@ -66,8 +78,17 @@ export enum Roles {
   ADMIN = 'ADMIN'
 }
 
+export type SendMessageInput = {
+  readonly body: Scalars['String'];
+};
+
 export type SocialAuthInput = {
   readonly code?: Maybe<Scalars['String']>;
+};
+
+export type Subscription = {
+  readonly __typename?: 'Subscription';
+  readonly newMessage: Message;
 };
 
 export type UpdateUserInput = {
@@ -112,6 +133,19 @@ export type LogoutMutation = (
     { readonly __typename?: 'User' }
     & Pick<User, '_id' | 'permalink' | 'name' | 'avatar' | 'bio'>
   )> }
+);
+
+export type SendMessageMutationVariables = Exact<{
+  input: SendMessageInput;
+}>;
+
+
+export type SendMessageMutation = (
+  { readonly __typename?: 'Mutation' }
+  & { readonly sendMessage: (
+    { readonly __typename?: 'Message' }
+    & Pick<Message, 'sent' | 'body'>
+  ) }
 );
 
 export type GitHubAuthQueryVariables = Exact<{
@@ -183,6 +217,17 @@ export type GetGoogleAuthUrlQueryVariables = Exact<{ [key: string]: never; }>;
 export type GetGoogleAuthUrlQuery = (
   { readonly __typename?: 'Query' }
   & Pick<Query, 'getGoogleAuthURL'>
+);
+
+export type NewMessageSubscriptionVariables = Exact<{ [key: string]: never; }>;
+
+
+export type NewMessageSubscription = (
+  { readonly __typename?: 'Subscription' }
+  & { readonly newMessage: (
+    { readonly __typename?: 'Message' }
+    & Pick<Message, 'sent' | 'body'>
+  ) }
 );
 
 
@@ -257,6 +302,39 @@ export function useLogoutMutation(baseOptions?: ApolloReactHooks.MutationHookOpt
 export type LogoutMutationHookResult = ReturnType<typeof useLogoutMutation>;
 export type LogoutMutationResult = ApolloReactCommon.MutationResult<LogoutMutation>;
 export type LogoutMutationOptions = ApolloReactCommon.BaseMutationOptions<LogoutMutation, LogoutMutationVariables>;
+export const SendMessageDocument = gql`
+    mutation sendMessage($input: SendMessageInput!) {
+  sendMessage(input: $input) {
+    sent
+    body
+  }
+}
+    `;
+export type SendMessageMutationFn = ApolloReactCommon.MutationFunction<SendMessageMutation, SendMessageMutationVariables>;
+
+/**
+ * __useSendMessageMutation__
+ *
+ * To run a mutation, you first call `useSendMessageMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSendMessageMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [sendMessageMutation, { data, loading, error }] = useSendMessageMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useSendMessageMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<SendMessageMutation, SendMessageMutationVariables>) {
+        return ApolloReactHooks.useMutation<SendMessageMutation, SendMessageMutationVariables>(SendMessageDocument, baseOptions);
+      }
+export type SendMessageMutationHookResult = ReturnType<typeof useSendMessageMutation>;
+export type SendMessageMutationResult = ApolloReactCommon.MutationResult<SendMessageMutation>;
+export type SendMessageMutationOptions = ApolloReactCommon.BaseMutationOptions<SendMessageMutation, SendMessageMutationVariables>;
 export const GitHubAuthDocument = gql`
     query gitHubAuth($input: SocialAuthInput!) {
   gitHubAuth(input: $input) {
@@ -462,3 +540,32 @@ export function useGetGoogleAuthUrlLazyQuery(baseOptions?: ApolloReactHooks.Lazy
 export type GetGoogleAuthUrlQueryHookResult = ReturnType<typeof useGetGoogleAuthUrlQuery>;
 export type GetGoogleAuthUrlLazyQueryHookResult = ReturnType<typeof useGetGoogleAuthUrlLazyQuery>;
 export type GetGoogleAuthUrlQueryResult = ApolloReactCommon.QueryResult<GetGoogleAuthUrlQuery, GetGoogleAuthUrlQueryVariables>;
+export const NewMessageDocument = gql`
+    subscription newMessage {
+  newMessage {
+    sent
+    body
+  }
+}
+    `;
+
+/**
+ * __useNewMessageSubscription__
+ *
+ * To run a query within a React component, call `useNewMessageSubscription` and pass it any options that fit your needs.
+ * When your component renders, `useNewMessageSubscription` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useNewMessageSubscription({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useNewMessageSubscription(baseOptions?: ApolloReactHooks.SubscriptionHookOptions<NewMessageSubscription, NewMessageSubscriptionVariables>) {
+        return ApolloReactHooks.useSubscription<NewMessageSubscription, NewMessageSubscriptionVariables>(NewMessageDocument, baseOptions);
+      }
+export type NewMessageSubscriptionHookResult = ReturnType<typeof useNewMessageSubscription>;
+export type NewMessageSubscriptionResult = ApolloReactCommon.SubscriptionResult<NewMessageSubscription>;

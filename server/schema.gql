@@ -20,6 +20,11 @@ enum Roles {
   ADMIN
 }
 
+type Message {
+  body: String!
+  sent: String!
+}
+
 type Query {
   gitHubAuth(input: SocialAuthInput!): User!
   redditAuth(input: SocialAuthInput!): User!
@@ -39,12 +44,21 @@ input GetUserInput {
 }
 
 type Mutation {
+  sendMessage(input: SendMessageInput!): Message!
   logout: User
   updateUser(input: UpdateUserInput!): User!
+}
+
+input SendMessageInput {
+  body: String!
 }
 
 input UpdateUserInput {
   email: String
   name: String
   bio: String
+}
+
+type Subscription {
+  newMessage: Message!
 }

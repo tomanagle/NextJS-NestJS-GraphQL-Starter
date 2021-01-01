@@ -14,17 +14,14 @@
     "incremental": true,
     "paths": {
       "@user/*": ["src/user/*"],
-      "@taxonomy/*": ["src/taxonomy/*"],
+      "@chat/*": ["src/chat/*"],
       "@post/*": ["src/post/*"],
       "@auth/*": ["src/auth/*"],
-      "@comment/*": ["src/comment/*"],
-      "@vote/*": ["src/vote/*"],
-      "@feedback/*": ["src/feedback/*"],
       "@types": ["src/types/types"],
       "@enums": ["src/types/enums"],
       "@secrets": ["src/config/secrets"],
       "@constants": ["src/config/constants"],
-      "@analytics": ["src/analytics/*"]
+      "@providers": ["src/config/providers"]
     }
   },
   "exclude": ["node_modules", "dist"]

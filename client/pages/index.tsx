@@ -6,7 +6,8 @@ import { useMeQuery } from 'generated';
 import LoggedOutHome from 'containers/LoggedOutHome';
 import withApollo from 'lib/withApollo';
 
-const Home = () => {
+const Home = props => {
+  console.log('clientId prop', props.clientId);
   const { data } = useMeQuery();
   const me = get(data, 'me', null);
 

@@ -33,6 +33,7 @@
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.19",
     "moment": "^2.25.3",
+    "nanoid": "^3.1.20",
     "next": "10.0.4",
     "next-compose": "^0.0.2",
     "next-ga": "^2.3.4",
