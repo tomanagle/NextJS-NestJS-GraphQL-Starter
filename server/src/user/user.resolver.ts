@@ -3,9 +3,9 @@ import deepClean from 'deep-clean';
 import { get } from 'lodash';
 import { UserService } from '@user/user.service';
 import { User } from '@user/user.schema';
-import { GetUserInput, UpdateUserInput } from './user.input';
 import { UseGuards } from '@nestjs/common';
-import { AuthGuard } from 'src/auth.guard';
+import { AuthGuard } from '@auth/auth.guard';
+import { GetUserInput, UpdateUserInput } from './user.input';
 
 @Resolver(() => User)
 export class UserResolver {

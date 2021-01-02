@@ -1,7 +1,7 @@
 import { Module, MiddlewareConsumer } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
-import { AuthMiddleware } from './auth.middleware';
+import { AuthMiddleware } from './auth/auth.middleware';
 import {
   CORS_ORIGIN,
   MONO_DB_CONNECTION_STRING,
