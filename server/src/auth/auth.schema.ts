@@ -17,7 +17,7 @@ export const SessionSchema = new mongoose.Schema(
 
 @ObjectType()
 export class Session extends Document {
-  @Field(_type => ID, { nullable: false })
+  @Field(() => ID, { nullable: false })
   readonly _id: string;
 
   @Field()
@@ -26,6 +26,6 @@ export class Session extends Document {
   @Field({ nullable: false })
   readonly token: string;
 
-  @Field(_type => ID, { nullable: false })
+  @Field({ nullable: false })
   readonly user: string;
 }
