@@ -1,3 +1,4 @@
+import { get } from 'lodash';
 import { Module, MiddlewareConsumer } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -39,8 +40,9 @@ import { AuthModule } from '@auth/auth.module';
         schemaTag: ENV,
       },
       autoSchemaFile: 'schema.gql',
-      context: ({ req, res }) => {
-        return { req, res };
+      context: ({ req, res, connection }) => {
+        const clientId = get(connection, 'context.clientId');
+        return { req, res, ...(clientId && { clientId }) };
       },
     }),
     AuthModule,
