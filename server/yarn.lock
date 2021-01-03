@@ -1755,10 +1755,10 @@ apollo-cache-control@^0.11.5:
     apollo-server-env "^2.4.5"
     apollo-server-plugin-base "^0.10.3"
 
-apollo-datasource-mongodb@^0.2.6:
-  version "0.2.8"
-  resolved "https://registry.yarnpkg.com/apollo-datasource-mongodb/-/apollo-datasource-mongodb-0.2.8.tgz#a9c166da47c0b9ea9f46b20a2a836a863d1f1db5"
-  integrity sha512-z0fGbbq4XrsAcLrHnagOLe1YKPtuaTVe3qGgOLQP+2AITV6lyjG1ATmp5RtdTmtSBhakodmmP4fOBYHaa7vP4g==
+apollo-datasource-mongodb@^0.2.11:
+  version "0.2.11"
+  resolved "https://registry.yarnpkg.com/apollo-datasource-mongodb/-/apollo-datasource-mongodb-0.2.11.tgz#d51cff92bb9d648610d70544c602c173ba78ae53"
+  integrity sha512-XZGvRnMntQ3EFyeB1OSXfO1tkqym0pJ3XWJT05NLI0/2FEPt7GKKSFrlPk1zrQO6wV37FeX3ZistIJTeW/1tiQ==
   dependencies:
     "@types/mongodb" "^3.5.25"
     "@types/mongoose" "^5.7.28"
