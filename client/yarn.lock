@@ -1134,10 +1134,10 @@
     ts-node "^9"
     tslib "^2"
 
-"@fortawesome/fontawesome-common-types@0.2.32", "@fortawesome/fontawesome-common-types@^0.2.32":
-  version "0.2.32"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.32.tgz#3436795d5684f22742989bfa08f46f50f516f259"
-  integrity sha512-ux2EDjKMpcdHBVLi/eWZynnPxs0BtFVXJkgHIxXRl+9ZFaHPvYamAfCzeeQFqHRjuJtX90wVnMRaMQAAlctz3w==
+"@fortawesome/fontawesome-common-types@0.2.34", "@fortawesome/fontawesome-common-types@^0.2.32", "@fortawesome/fontawesome-common-types@^0.2.34":
+  version "0.2.34"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.34.tgz#0a8c348bb23b7b760030f5b1d912e582be4ec915"
+  integrity sha512-XcIn3iYbTEzGIxD0/dY5+4f019jIcEIWBiHc3KrmK/ROahwxmZ/s+tdj97p/5K0klz4zZUiMfUlYP0ajhSJjmA==
 
 "@fortawesome/free-brands-svg-icons@^5.15.1":
   version "5.15.1"
@@ -1153,12 +1153,12 @@
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.32"
 
-"@fortawesome/free-solid-svg-icons@5.15.1":
-  version "5.15.1"
-  resolved "https://registry.yarnpkg.com/@fortawesome/free-solid-svg-icons/-/free-solid-svg-icons-5.15.1.tgz#e1432676ddd43108b41197fee9f86d910ad458ef"
-  integrity sha512-EFMuKtzRMNbvjab/SvJBaOOpaqJfdSap/Nl6hst7CgrJxwfORR1drdTV6q1Ib/JVzq4xObdTDcT6sqTaXMqfdg==
+"@fortawesome/free-solid-svg-icons@5.15.2":
+  version "5.15.2"
+  resolved "https://registry.yarnpkg.com/@fortawesome/free-solid-svg-icons/-/free-solid-svg-icons-5.15.2.tgz#25bb035de57cf85aee8072965732368ccc8e8943"
+  integrity sha512-ZfCU+QjaFsdNZmOGmfqEWhzI3JOe37x5dF4kz9GeXvKn/sTxhqMtZ7mh3lBf76SvcYY5/GKFuyG7p1r4iWMQqw==
   dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.32"
+    "@fortawesome/fontawesome-common-types" "^0.2.34"
 
 "@graphql-codegen/add@^1.5.0":
   version "1.17.7"
@@ -3015,16 +3015,16 @@ bumbag-server@^1.5.1:
   dependencies:
     emotion-server "10.0.27"
 
-bumbag@^1.6.5:
-  version "1.6.5"
-  resolved "https://registry.yarnpkg.com/bumbag/-/bumbag-1.6.5.tgz#1a5fee775eef9a7fd1117d6707ebd569a9448b3a"
-  integrity sha512-GiWrdmV+tVTwnQjWu5R2PcoCVJGTxouLcc2k4YEFk1udzUijoDLyXeWUab7UvVTi6gBl7D4/1nOEMrLTwPaZ1Q==
+bumbag@^1.7.5:
+  version "1.7.5"
+  resolved "https://registry.yarnpkg.com/bumbag/-/bumbag-1.7.5.tgz#d3f30c8ddda11df3267a7ad06df1abc2f1e1bf12"
+  integrity sha512-bxZWNseXHeJ2TqnV1A6wWvFcigI8dhuYHUl2Qis/0qczUSh9f6iE2PS2oJ22Z+xLUR4cazNf7VXwl06nPEIvXQ==
   dependencies:
     "@emotion/core" "10.1.1"
     "@emotion/is-prop-valid" "0.8.2"
     "@emotion/styled" "10.0.27"
-    "@fortawesome/fontawesome-common-types" "0.2.32"
-    "@fortawesome/free-solid-svg-icons" "5.15.1"
+    "@fortawesome/fontawesome-common-types" "0.2.34"
+    "@fortawesome/free-solid-svg-icons" "5.15.2"
     "@types/classnames" "2.2.11"
     capsize "1.1.0"
     classnames "2.2.6"
