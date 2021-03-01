@@ -17,7 +17,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.15.1",
     "@hookform/resolvers": "^1.3.1",
     "@sentry/browser": "^5.28.0",
-    "@sentry/node": "^5.28.0",
+    "@sentry/node": "^6.2.1",
     "@sentry/webpack-plugin": "^1.11.1",
     "babel-plugin-module-resolver": "^4.0.0",
     "bumbag": "^1.6.5",
