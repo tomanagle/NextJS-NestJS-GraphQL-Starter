@@ -26,7 +26,7 @@
     "@nestjs/graphql": "^7.3.5",
     "@nestjs/mongoose": "^6.4.0",
     "@nestjs/platform-express": "^7.6.4",
-    "@sentry/node": "5.16.1",
+    "@sentry/node": "6.2.1",
     "apollo-datasource-mongodb": "^0.2.6",
     "apollo-server-express": "^2.19.1",
     "axios": "^0.21.1",
