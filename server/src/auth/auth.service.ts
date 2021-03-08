@@ -36,7 +36,7 @@ const oauth2Client = new google.auth.OAuth2(
    * This is where Google will redirect the user after they
    * give permission to your application
    */
-  `${CORS_ORIGIN}/login/google`,
+  `${CORS_ORIGIN}/auth/google`,
 );
 
 async function getRedditUser({ code }: { code: string }): Promise<RedditUser> {
@@ -297,7 +297,7 @@ export class AuthService {
     const googleUser = await getGoogleUser({ code: input.code });
 
     let user = await this.userModel
-      .findOne({ githubId: String(googleUser.id) })
+      .findOne({ googleId: String(googleUser.id) })
       .exec();
 
     if (user) {
