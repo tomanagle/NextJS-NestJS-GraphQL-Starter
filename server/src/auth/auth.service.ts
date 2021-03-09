@@ -141,7 +141,7 @@ async function getGoogleUser({ code }) {
 @Injectable()
 export class AuthService {
   constructor(
-    @InjectModel('User') private readonly userModel: Model<UserModel, User>,
+    @InjectModel('User') private readonly userModel: Model<User>,
     @InjectModel('Session') private readonly sessionModel: Model<Session>,
   ) {}
 

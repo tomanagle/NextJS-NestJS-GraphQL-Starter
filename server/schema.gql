@@ -2,6 +2,11 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Message {
+  body: String!
+  sent: String!
+}
+
 type User {
   _id: ID!
   email: String
@@ -18,11 +23,6 @@ type User {
 enum Roles {
   USER
   ADMIN
-}
-
-type Message {
-  body: String!
-  sent: String!
 }
 
 type Query {

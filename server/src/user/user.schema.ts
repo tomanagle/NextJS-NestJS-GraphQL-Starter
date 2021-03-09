@@ -84,34 +84,6 @@ UserSchema.plugin(permalink, {
   sources: ['name'],
 });
 
-/**
- * Password hash middleware.
- */
-UserSchema.methods.comparePassword = function(
-  candidatePassword: string,
-): Promise<boolean> {
-  return new Promise((resolve, reject) => {
-    bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
-      if (err) {
-        return reject(false);
-      }
-      if (!isMatch) {
-        return resolve(false);
-      }
-      return resolve(true);
-    });
-  });
-};
-
-UserSchema.methods.compareEmailVerification = function(
-  emailVerification: string,
-): boolean {
-  return (
-    String(this.tokens.emailVerification).trim() ===
-    String(emailVerification).trim()
-  );
-};
-
 UserSchema.methods.generateJWT = function(): string {
   return jwt.sign({ _id: this._id }, SIGNING_KEY, { expiresIn: '1h' });
 };
@@ -150,7 +122,5 @@ export class User extends Document {
 }
 
 export interface UserModel extends User {
-  comparePassword(candidatePassword: string): boolean;
-  compareEmailVerification(emailVerification: string): boolean;
   generateJWT(): string;
 }

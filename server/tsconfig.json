@@ -6,6 +6,7 @@
     "esModuleInterop": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "skipLibCheck": true,
     "target": "esnext",
     "lib": ["esnext"],
     "sourceMap": true,
