@@ -655,14 +655,14 @@
     webpack "4.44.1"
     webpack-node-externals "2.5.1"
 
-"@nestjs/common@^7.6.5":
-  version "7.6.5"
-  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-7.6.5.tgz#d6e9435453eef2d1b492384ca27fa23358744949"
-  integrity sha512-WvBJd71ktaCRm9KTURVqn1YMyUzsOIkvezjP7WEpP9DVqQUOFVvn6/osJGZky/qL+zE4P7NBNyoXM94bpYvMwQ==
+"@nestjs/common@^7.6.13":
+  version "7.6.13"
+  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-7.6.13.tgz#597558afedfddeb5021fe8a154327ee082279ab8"
+  integrity sha512-xijw6so4yA8Ywi8mnrA7Kz97ZC36u20Eyb5/XvmokdLcgTcTyHVdE39r44JYnjHPf8SKZoJ965zdu/fKl4s4GQ==
   dependencies:
     axios "0.21.1"
     iterare "1.2.1"
-    tslib "2.0.3"
+    tslib "2.1.0"
     uuid "8.3.2"
 
 "@nestjs/core@^7.0.0":
