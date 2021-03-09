@@ -27,7 +27,7 @@
     "@nestjs/mongoose": "^6.4.0",
     "@nestjs/platform-express": "^7.6.4",
     "@sentry/node": "6.2.1",
-    "apollo-datasource-mongodb": "^0.2.6",
+    "apollo-datasource-mongodb": "^0.3.0",
     "apollo-server-express": "^2.19.1",
     "axios": "^0.21.1",
     "bcrypt-nodejs": "^0.0.3",
