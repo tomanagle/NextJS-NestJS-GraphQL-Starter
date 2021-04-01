@@ -54,7 +54,7 @@
     "@babel/helper-call-delegate": "^7.8.7",
     "@graphql-codegen/add": "^1.5.0",
     "@graphql-codegen/cli": "^1.20.1",
-    "@graphql-codegen/introspection": "1.12.2",
+    "@graphql-codegen/introspection": "1.18.1",
     "@graphql-codegen/schema-ast": "^1.5.0",
     "@graphql-codegen/typescript": "^1.7.0",
     "@graphql-codegen/typescript-document-nodes": "^1.7.0",
