@@ -20,7 +20,7 @@
     "@sentry/node": "^6.2.1",
     "@sentry/webpack-plugin": "^1.14.1",
     "babel-plugin-module-resolver": "^4.0.0",
-    "bumbag": "^1.7.5",
+    "bumbag": "^1.11.6",
     "bumbag-server": "^1.5.1",
     "dotenv": "^8.2.0",
     "email-validator": "^2.0.4",
