@@ -71,7 +71,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 [Sign up to DigitalOcean](https://m.do.co/c/1b74cb8c56f4) I 💖 DigitalOcean
 
-[Subscribe me on YouTube](https://www.youtube.com/channel/UClEEzwG7Tl3-8eY11Qytsog)
+[Subscribe on YouTube](https://www.youtube.com/channel/UClEEzwG7Tl3-8eY11Qytsog)
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
