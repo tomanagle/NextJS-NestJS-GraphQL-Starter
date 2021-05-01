@@ -46,7 +46,7 @@
     "lodash": "^4.17.21",
     "mongoose": "^5.11.15",
     "mongoose-permalink": "^2.0.0",
-    "querystring": "^0.2.0",
+    "querystring": "^0.2.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^6.5.4",
