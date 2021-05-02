@@ -48,7 +48,7 @@
     "react-i18next": "^11.8.12",
     "styled-components": "^5.2.3",
     "subscriptions-transport-ws": "^0.9.18",
-    "yup": "^0.32.8"
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@babel/helper-call-delegate": "^7.8.7",
