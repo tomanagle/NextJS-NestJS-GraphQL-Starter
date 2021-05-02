@@ -6150,10 +6150,10 @@ next-manifest@^3.0.1:
     "@pwa/manifest" "^1.1.0"
     "@pwa/manifest-icons" "^4.0.0"
 
-next-offline@^5.0.0:
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/next-offline/-/next-offline-5.0.3.tgz#99dfa8af54b34287618e8894494dbe3a719d0913"
-  integrity sha512-c0UwdaPZPpFWB25pIaaTKeD6cbqWoTyJRThDF3wCOTcBIXubso9NGF0yZ7xSOlZWix1UFixcITdSAaMyg0Wh1g==
+next-offline@^5.0.5:
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/next-offline/-/next-offline-5.0.5.tgz#91b2792f92a65e33eee00c9ab0dd1af9b9f71caa"
+  integrity sha512-GOpq+mD7ecrgW+A8+Y31BLNca3b8EeyRMhW5C9PsCc/C2RO1AzrssgIgQIrRulFuXDvXuPE5hWI4/DTHeOUp6Q==
   dependencies:
     copy-webpack-plugin "~5.1.2"
     fs-extra "~8.1.0"
