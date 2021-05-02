@@ -1,0 +1,110 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/server"
+  schedule:
+    interval: monthly
+    time: "19:30"
+  open-pull-requests-limit: 10
+  target-branch: master
+  reviewers:
+  - tomanagle
+  labels:
+  - server
+  - dependencies
+  - dependabot
+  ignore:
+  - dependency-name: typescript
+    versions:
+    - 4.2.2
+  - dependency-name: "@types/node"
+    versions:
+    - 14.14.19
+    - 14.14.22
+    - 14.14.27
+  - dependency-name: "@nestjs/platform-express"
+    versions:
+    - 7.6.5
+    - 7.6.8
+  - dependency-name: mongoose
+    versions:
+    - 5.11.14
+    - 5.11.9
+  - dependency-name: faker
+    versions:
+    - 5.2.0
+  - dependency-name: "@sentry/node"
+    versions:
+    - 6.0.4
+- package-ecosystem: npm
+  directory: "/client"
+  schedule:
+    interval: monthly
+    time: "19:30"
+  open-pull-requests-limit: 10
+  target-branch: master
+  reviewers:
+  - tomanagle
+  labels:
+  - client
+  - dependencies
+  - dependabot
+  ignore:
+  - dependency-name: next
+    versions:
+    - 10.0.6
+    - 10.0.7
+    - 10.1.2
+  - dependency-name: typescript
+    versions:
+    - 4.2.2
+    - 4.2.3
+  - dependency-name: "@sentry/node"
+    versions:
+    - 5.29.2
+    - 6.0.4
+    - 6.2.1
+  - dependency-name: "@types/node"
+    versions:
+    - 14.14.19
+    - 14.14.22
+    - 14.14.27
+  - dependency-name: "@sentry/browser"
+    versions:
+    - 5.29.2
+    - 6.0.4
+  - dependency-name: bumbag
+    versions:
+    - 1.7.2
+  - dependency-name: eslint-plugin-prettier
+    versions:
+    - 3.3.0
+  - dependency-name: "@graphql-codegen/cli"
+    versions:
+    - 1.20.0
+- package-ecosystem: docker
+  directory: "/server"
+  schedule:
+    interval: weekly
+    time: "19:30"
+  open-pull-requests-limit: 10
+  target-branch: master
+  reviewers:
+  - tomanagle
+  labels:
+  - server
+  - docker
+  - dependabot
+- package-ecosystem: docker
+  directory: "/client"
+  schedule:
+    interval: weekly
+    time: "19:30"
+  open-pull-requests-limit: 10
+  target-branch: master
+  reviewers:
+  - tomanagle
+  labels:
+  - client
+  - docker
+  - dependabot
