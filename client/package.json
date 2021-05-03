@@ -42,7 +42,7 @@
     "next-seo": "^4.23.0",
     "next-with-apollo": "^5.1.0",
     "nprogress": "^0.2.0",
-    "react": "^17.0.1",
+    "react": "^17.0.2",
     "react-dom": "^16.13.1",
     "react-hook-form": "^6.13.0",
     "react-i18next": "^11.8.12",
