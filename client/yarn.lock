@@ -6150,10 +6150,10 @@ next-seo@^4.23.0:
   resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-4.23.0.tgz#24ef200e9faf0489ff1095f63b06adc21187db4c"
   integrity sha512-/yTeeUT+zFTsrpP8iigwiwsj+HyT+ks1G27mgfnkKQBrFz9uph6Bot4nDrwfICgjvdLt2Zdve6okAgRUmhm+/g==
 
-next-with-apollo@^5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/next-with-apollo/-/next-with-apollo-5.1.0.tgz#2e6f87b94fb64d88c4c07f6ae406fd7a3092454e"
-  integrity sha512-LaBv4BKkyc2SUhkTbPODjCr17mk6mB7yC7yGnbfZ11+PawJ+YQZHsqLmh7z5exNba+HuBCZ/Y1I44qm9zNTZRw==
+next-with-apollo@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/next-with-apollo/-/next-with-apollo-5.1.1.tgz#491e1112ba2ac1993cd669d610801c554b9ddd16"
+  integrity sha512-SqI+q4q8ib2YrRXhzVETTBKyk9zyCsHdfGdqCixVOZsnHMl/qsozNgw7/a5drGpsP3jAFQCbenAB3sYc6Gi04g==
   dependencies:
     isomorphic-unfetch "^3.0.0"
 
