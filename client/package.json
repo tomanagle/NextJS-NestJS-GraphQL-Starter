@@ -25,7 +25,7 @@
     "dotenv": "^8.2.0",
     "email-validator": "^2.0.4",
     "eslint": "^6.5.1",
-    "formik": "^2.1.4",
+    "formik": "^2.2.8",
     "graphql": "^14.5.8",
     "graphql-tag": "^2.10.1",
     "i18next": "^20.1.0",
