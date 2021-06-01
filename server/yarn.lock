@@ -1805,10 +1805,10 @@ apollo-cache-control@^0.13.0:
     apollo-server-env "^3.1.0"
     apollo-server-plugin-base "^0.12.0"
 
-apollo-datasource-mongodb@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/apollo-datasource-mongodb/-/apollo-datasource-mongodb-0.3.0.tgz#4f3e8cb2bdf5a65d695964281b437116d395238f"
-  integrity sha512-fQx5TLqXKqpcCUCnRaDuKm7GjPL489yOSVI7Ekk7uXQ/Q36RpxtFElagBkuiScH7gQFXyNvaGbEjrTJUrteSIg==
+apollo-datasource-mongodb@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/apollo-datasource-mongodb/-/apollo-datasource-mongodb-0.4.1.tgz#74865dd69969fc096f107865bdae080ccd26599a"
+  integrity sha512-7fhjBUFOOZjflqvrt5jkGT8q8UD/bf9WpsNhRpuQXdnoLcqj8vMEVnha1cw7TK55a4V4FOG8TQiTOnDXa1BNfg==
   dependencies:
     "@types/mongodb" "^3.5.25"
     "@types/mongoose" "^5.7.28"
@@ -2047,12 +2047,7 @@ apollo-server-env@^3.1.0:
     node-fetch "^2.6.1"
     util.promisify "^1.0.0"
 
-apollo-server-errors@^2.4.1, apollo-server-errors@^2.4.2:
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/apollo-server-errors/-/apollo-server-errors-2.4.2.tgz#1128738a1d14da989f58420896d70524784eabe5"
-  integrity sha512-FeGxW3Batn6sUtX3OVVUm7o56EgjxDlmgpTLNyWcLb0j6P8mw9oLNyAm3B+deHA4KNdNHO5BmHS2g1SJYjqPCQ==
-
-apollo-server-errors@^2.5.0:
+apollo-server-errors@^2.4.1, apollo-server-errors@^2.4.2, apollo-server-errors@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/apollo-server-errors/-/apollo-server-errors-2.5.0.tgz#5d1024117c7496a2979e3e34908b5685fe112b68"
   integrity sha512-lO5oTjgiC3vlVg2RKr3RiXIIQ5pGXBFxYGGUkKDhTud3jMIhs+gel8L8zsEjKaKxkjHhCQAA/bcEfYiKkGQIvA==
