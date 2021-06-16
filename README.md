@@ -66,6 +66,11 @@ The easiest way to deploy is:
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
+## NestJS GraphQL tutorials
+* Build a GraphQL Server with NestJS - https://youtu.be/bQPk4S_W-pc
+* Adding MongoDB to a NestJS GraphQL Server - https://youtu.be/xnyULqzQ-Rk
+* Username & password authentication - https://youtu.be/PXwnT25SZro
+
 ## Support
 [Buy me a Coffee](https://www.buymeacoffee.com/tomn)
 
