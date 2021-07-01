@@ -1250,7 +1250,7 @@
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
   integrity sha512-tHq6qdbT9U1IRSGf14CL0pUlULksvY9OZ+5eEgl1N7t+OA3tGvNpxJCzuKQlsNgCVwbAs670L1vcVQi8j9HjnA==
 
-"@types/mongodb@*", "@types/mongodb@^3.5.25", "@types/mongodb@^3.5.27":
+"@types/mongodb@*", "@types/mongodb@^3.5.27":
   version "3.6.6"
   resolved "https://registry.yarnpkg.com/@types/mongodb/-/mongodb-3.6.6.tgz#d62300927564e03daa08794eb207ff4f760f9014"
   integrity sha512-ghYevKiSh/TGk2MAwSRZP7T1ilR9Pw8Fa7pT9GGVGZPUsWKdZjZ4G6LG3MqK2iXKdNba994F8W9ikA+qx2Eo3A==
@@ -1805,12 +1805,12 @@ apollo-cache-control@^0.13.0:
     apollo-server-env "^3.1.0"
     apollo-server-plugin-base "^0.12.0"
 
-apollo-datasource-mongodb@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/apollo-datasource-mongodb/-/apollo-datasource-mongodb-0.3.0.tgz#4f3e8cb2bdf5a65d695964281b437116d395238f"
-  integrity sha512-fQx5TLqXKqpcCUCnRaDuKm7GjPL489yOSVI7Ekk7uXQ/Q36RpxtFElagBkuiScH7gQFXyNvaGbEjrTJUrteSIg==
+apollo-datasource-mongodb@^0.4.3:
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/apollo-datasource-mongodb/-/apollo-datasource-mongodb-0.4.3.tgz#50e487ee30046813f2302bfe9fd2e934db5ece5b"
+  integrity sha512-B1ISMRiMrMOiNtYzckM1mshckmSWVxgS2428qJq/g7B6C8VZ9xbz3yj5XpgFKKTB1FfFfE+A+NiCeiLuj6X9yg==
   dependencies:
-    "@types/mongodb" "^3.5.25"
+    "@types/mongodb" "^3.5.27"
     "@types/mongoose" "^5.7.28"
     apollo-datasource "^0.3.1"
     apollo-server-caching "^0.3.1"
@@ -2047,12 +2047,7 @@ apollo-server-env@^3.1.0:
     node-fetch "^2.6.1"
     util.promisify "^1.0.0"
 
-apollo-server-errors@^2.4.1, apollo-server-errors@^2.4.2:
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/apollo-server-errors/-/apollo-server-errors-2.4.2.tgz#1128738a1d14da989f58420896d70524784eabe5"
-  integrity sha512-FeGxW3Batn6sUtX3OVVUm7o56EgjxDlmgpTLNyWcLb0j6P8mw9oLNyAm3B+deHA4KNdNHO5BmHS2g1SJYjqPCQ==
-
-apollo-server-errors@^2.5.0:
+apollo-server-errors@^2.4.1, apollo-server-errors@^2.4.2, apollo-server-errors@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/apollo-server-errors/-/apollo-server-errors-2.5.0.tgz#5d1024117c7496a2979e3e34908b5685fe112b68"
   integrity sha512-lO5oTjgiC3vlVg2RKr3RiXIIQ5pGXBFxYGGUkKDhTud3jMIhs+gel8L8zsEjKaKxkjHhCQAA/bcEfYiKkGQIvA==
