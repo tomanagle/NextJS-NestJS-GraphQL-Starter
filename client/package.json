@@ -47,7 +47,7 @@
     "react-hook-form": "^6.13.0",
     "react-i18next": "^11.8.12",
     "styled-components": "^5.2.3",
-    "subscriptions-transport-ws": "^0.9.18",
+    "subscriptions-transport-ws": "^0.9.19",
     "yup": "^0.32.8"
   },
   "devDependencies": {
