@@ -24,7 +24,7 @@
     "@nestjs/common": "^7.6.15",
     "@nestjs/core": "^7.0.0",
     "@nestjs/graphql": "^7.9.11",
-    "@nestjs/mongoose": "^7.2.4",
+    "@nestjs/mongoose": "^8.0.0",
     "@nestjs/platform-express": "^7.6.15",
     "@sentry/node": "6.10.0",
     "apollo-datasource-mongodb": "^0.3.0",
