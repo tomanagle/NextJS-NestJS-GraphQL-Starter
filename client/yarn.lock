@@ -7111,10 +7111,10 @@ react-ga@^2.5.3:
   resolved "https://registry.yarnpkg.com/react-ga/-/react-ga-2.7.0.tgz#24328f157f31e8cffbf4de74a3396536679d8d7c"
   integrity sha512-AjC7UOZMvygrWTc2hKxTDvlMXEtbmA0IgJjmkhgmQQ3RkXrWR11xEagLGFGaNyaPnmg24oaIiaNPnEoftUhfXA==
 
-react-hook-form@^6.13.0:
-  version "6.13.0"
-  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.13.0.tgz#91e6da52cd3a636724b38ad8bc3704d7bd8a2626"
-  integrity sha512-AADO0EtAGEggII3DNhBCwm7MSwkBWCVo72K32NY6YzhSTBL5bJsBfWJ4/PVGBer31js5ppt+I6/qUyLo8o8AvA==
+react-hook-form@^7.20.5:
+  version "7.20.5"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.20.5.tgz#69d563c9cceafb2d4449bd3c28d17342b57b5830"
+  integrity sha512-xYeBmQW6oqxDYAYVWIoZYC7tRD6lJBJt9b8Rr1Mv/VhZ+ZUCy2IuXlm2YA9i0/zl0TKKxqBWQOxGEb3qyVIhMg==
 
 react-i18next@^11.8.12:
   version "11.8.12"
