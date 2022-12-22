@@ -42,7 +42,7 @@
     "graphql-subscriptions": "^1.2.1",
     "graphql-tools": "^5.0.0",
     "helmet": "^4.4.1",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "lodash": "^4.17.21",
     "mongoose": "^5.11.15",
     "mongoose-permalink": "^2.0.0",
