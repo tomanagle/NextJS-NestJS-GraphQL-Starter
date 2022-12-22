@@ -30,7 +30,7 @@
     "graphql-tag": "^2.10.1",
     "i18next": "^20.1.0",
     "i18next-xhr-backend": "^3.2.2",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "lodash": "^4.17.21",
     "moment": "^2.25.3",
     "nanoid": "^3.1.20",
